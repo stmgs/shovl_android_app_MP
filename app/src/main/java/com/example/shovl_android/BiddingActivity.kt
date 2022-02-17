@@ -1,6 +1,6 @@
 package com.example.shovl_android
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 class BiddingActivity : AppCompatActivity() {
