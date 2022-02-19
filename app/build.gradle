@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'  // Google Services plugin added when firebase was sdded
+
 }
 
 android {
@@ -50,6 +52,19 @@ dependencies {
     implementation 'com.google.android.libraries.places:places:2.5.0'
 
     implementation 'com.stripe:stripe-android:19.1.1'
+
+    //google material components
+    implementation 'com.google.android.material:material:1.5.0'
+
+    //card view
+    implementation("androidx.cardview:cardview:1.0.0")
+
+    //firebase
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation platform('com.google.firebase:firebase-bom:29.1.0')
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
+    implementation 'com.google.firebase:firebase-messaging'
 
 
 

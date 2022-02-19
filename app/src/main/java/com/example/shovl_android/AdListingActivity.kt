@@ -43,13 +43,9 @@ class AdListingActivity : AppCompatActivity() {
                     val newDateString = DateFormat.getDateInstance().format(cal.time)
                     etFromDate.text = newDateString
                 }
-
             }, year, month, day)
-
             dialog.show()
-
         }
-
     }
 
     private fun showDatePickerDialog(view: View?, c: Calendar) {

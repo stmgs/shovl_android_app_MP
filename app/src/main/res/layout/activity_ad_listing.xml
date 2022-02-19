@@ -281,15 +281,13 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_done_ad_listing"
             android:layout_width="0dp"
             android:layout_height="56dp"
             android:layout_margin="20dp"
             app:cornerRadius="8dp"
             android:text="Done"
-            android:background="@color/primaryColor"
-            android:backgroundTint="@color/primaryColor"
             android:textAllCaps="false"
             android:textSize="20sp"
             android:textColor="@color/white"
@@ -297,7 +295,7 @@
             app:layout_constraintStart_toStartOf="@id/guide_left"
             app:layout_constraintEnd_toEndOf="@id/guide_right"/>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_cancel_ad_listing"
             android:layout_width="0dp"
             android:layout_height="56dp"
@@ -305,7 +303,6 @@
             app:cornerRadius="8dp"
             android:text="Cancel"
             android:textColor="@color/white"
-            android:background="@color/quantum_googred500"
             android:backgroundTint="@color/quantum_googred500"
             android:textAllCaps="false"
             android:textSize="20sp"
