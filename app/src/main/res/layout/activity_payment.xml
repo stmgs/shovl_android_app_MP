@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@id/et_card_number" />
 
     <com.stripe.android.view.ExpiryDateEditText
-        android:id="@+id/et_exp_date_pay_by_card"
+        android:id="@+id/et_exp_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
@@ -103,7 +103,7 @@
         app:layout_constraintTop_toBottomOf="@id/et_card_number" />
 
     <com.stripe.android.view.CvcEditText
-        android:id="@+id/et_cvc_pay_by_card"
+        android:id="@+id/et_cvc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -121,7 +121,7 @@
         app:layout_constraintTop_toBottomOf="@id/lbl_cvc" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_pay_by_card"
+        android:id="@+id/btn_pay"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="56dp"

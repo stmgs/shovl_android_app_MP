@@ -1,28 +1,64 @@
 package com.example.shovl_android
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
+import android.widget.Toast
+import com.example.shovl_android.databinding.ActivityLoginBinding
 import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity() {
+
+    private lateinit var binding : ActivityLoginBinding
+    private lateinit var email : String
+    private lateinit var password:String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //if (Patterns.EMAIL_ADDRESS.matcher(username).matches() )
+        binding.textviewRegisterHere.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+            finish()
+        }
+
+        binding.loginBtn.setOnClickListener {
+            email= binding.etEmailLogin.text.toString()
+            password=binding.etPasswordLogin.text.toString()
+
+            if (!validateEmail(email) || !validatePassword(password)){
+                Toast.makeText(this,"Invalid email or password", Toast.LENGTH_LONG).show()
+            }else{
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+        }
+    }
+
+    private fun validateEmail(email: String): Boolean {
+        if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            //binding.textInputEmail.error = null
+            //binding.textInputEmail.isErrorEnabled = false
+            return true
+
+        } else {
+            //binding.textInputEmail.error = "Oops! Seems like you entered invalid email."
+            return false
+        }
     }
 
     private fun validatePassword(password: String): Boolean {
         val PASSWORD_PATTERN =
             Pattern.compile(
                 "^" +
-                        "(?=.*[0-9])" +         //at least 1 digit
-                        "(?=.*[a-z])" +         //at least 1 lower case letter
-                        "(?=.*[A-Z])" +         //at least 1 upper case letter
+                        //"(?=.*[0-9])" +         //at least 1 digit
+                        //"(?=.*[a-z])" +         //at least 1 lower case letter
+                        //"(?=.*[A-Z])" +         //at least 1 upper case letter
                         "(?=.*[a-zA-Z])" +      //any letter
                         "(?=.*[@#$%^&+=])" +    //at least 1 special character
-                        "(?=\\S+$)" +           //no white spaces
+                        //"(?=\\S+$)" +           //no white spaces
                         ".{8,}" +               //minimum 8 characters
                         "$"
 
@@ -30,7 +66,19 @@ class LoginActivity : AppCompatActivity() {
 
         // if password field is empty
         // it will display error message "Password can not be empty"
-        return PASSWORD_PATTERN.matcher(password).matches()
+        if (password.isEmpty()){
+            return false
+        } else if(password.length <8){
+            return false
+        } else if (!PASSWORD_PATTERN.matcher(password).matches()) {
+            //binding.textInputPassword.setError("Password must contain 1 special character")
+            return false
+        }  else {
+            //binding.textInputPassword.setError(null)
+            //binding.textInputPassword.isErrorEnabled = false
+            return true
+        }
+
     }
 
 }
