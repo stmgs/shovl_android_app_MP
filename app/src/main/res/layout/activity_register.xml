@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,126 +9,241 @@
     android:orientation="vertical"
     tools:context=".RegisterActivity">
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_signup_background"
+    android:orientation="vertical"
+    >
+
     <ImageView
         android:layout_width="325dp"
         android:layout_height="110dp"
         android:layout_gravity="center"
-        android:src="@drawable/shovl_logo" />
+        android:src="@drawable/shovl_logo"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_email_signup"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="50dp"
-            android:drawablePadding="12dp"
-            android:ems="10"
-            android:hint=" Email Address"
+            android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:textSize="16sp"
-            android:backgroundTint="#145DA0"/>
+            app:endIconMode="clear_text"
+            app:hintEnabled="false"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:layout_constraintEnd_toEndOf="@+id/glRight"
+            app:layout_constraintStart_toStartOf="@+id/glLeft"
+            app:layout_constraintTop_toBottomOf="@+id/lblEmail"
+            >
 
-        <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_email_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email Address"
+                android:background="@drawable/grey_tint_background"
 
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_password_signup"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:ems="10"
-            android:drawablePadding="12dp"
-            android:hint=" Password"
-            android:inputType="textPassword"
-            android:textSize="16sp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:backgroundTint="#145DA0"
-            />
-        <EditText
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            app:endIconMode="password_toggle"
+            app:hintEnabled="false"
+            android:layout_marginTop="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:layout_constraintEnd_toEndOf="@+id/glRight"
+            app:layout_constraintStart_toStartOf="@+id/glLeft"
+            app:layout_constraintTop_toBottomOf="@+id/lblEmail"
 
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:background="@drawable/grey_tint_background"
+
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_confirm_password_signup"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:ems="10"
-            android:drawablePadding="12dp"
-            android:hint=" Confirm Password"
-            android:inputType="textPassword"
-            android:textSize="16sp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:backgroundTint="#145DA0"
-            />
-        <EditText
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            app:endIconMode="password_toggle"
+            app:hintEnabled="false"
+            android:layout_marginTop="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:layout_constraintEnd_toEndOf="@+id/glRight"
+            app:layout_constraintStart_toStartOf="@+id/glLeft"
+            app:layout_constraintTop_toBottomOf="@+id/lblEmail"
 
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_confirm_password_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Re-enter Password"
+                android:background="@drawable/grey_tint_background"
+
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_name_signup"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:ems="10"
-            android:drawablePadding="12dp"
-            android:hint=" Name"
-            android:inputType="text"
-            android:textSize="16sp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:backgroundTint="#145DA0"
-            />
-        <EditText
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            app:endIconMode="clear_text"
+            app:hintEnabled="false"
+            android:layout_marginTop="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:layout_constraintEnd_toEndOf="@+id/glRight"
+            app:layout_constraintStart_toStartOf="@+id/glLeft"
+            app:layout_constraintTop_toBottomOf="@+id/lblEmail"
+            >
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_name_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:background="@drawable/grey_tint_background"
+
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_age_signup"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:ems="10"
-            android:drawablePadding="12dp"
-            android:hint=" Age"
-            android:inputType="number"
-            android:textSize="16sp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:backgroundTint="#145DA0"
-            />
-        <EditText
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            app:endIconMode="clear_text"
+            app:hintEnabled="false"
+            android:layout_marginTop="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:layout_constraintEnd_toEndOf="@+id/glRight"
+            app:layout_constraintStart_toStartOf="@+id/glLeft"
+            app:layout_constraintTop_toBottomOf="@+id/lblEmail"
+            >
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_age_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Age"
+                android:inputType="number"
+                android:background="@drawable/grey_tint_background"
+
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_address_signup"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:ems="10"
-            android:drawablePadding="12dp"
-            android:hint=" Address"
-            android:inputType="text"
-            android:textSize="16sp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:backgroundTint="#145DA0"
-            />
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            app:endIconMode="clear_text"
+            app:hintEnabled="false"
+            android:layout_marginTop="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:layout_constraintEnd_toEndOf="@+id/glRight"
+            app:layout_constraintStart_toStartOf="@+id/glLeft"
+            app:layout_constraintTop_toBottomOf="@+id/lblEmail"
+            >
 
-        <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_address_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address"
+                android:background="@drawable/grey_tint_background"
 
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="50dp"
-            android:backgroundTint="#145DA0"
-            android:drawablePadding="12dp"
-            android:ems="10"
-            android:hint=" Gender"
-            android:inputType="text"
-            android:textSize="16sp" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
             android:layout_gravity="center"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="50dp"
-            android:backgroundTint="#145DA0"
-            android:text="Register" />
+            android:gravity="center"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:layout_weight="1"
+                android:textColor="@color/primaryColor"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+            <RadioGroup
+            android:id="@+id/rbGender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+                android:layout_weight="2"
+            >
+
+            <RadioButton
+                android:id="@+id/rbMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:buttonTint="@color/primaryColor"
+                android:text="Male"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rbFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="Female"
+                android:buttonTint="@color/primaryColor"
+                android:textSize="14sp" />
+        </RadioGroup
+            >
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="60dp"
+            android:text="Register"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/glRight"
+            app:layout_constraintStart_toStartOf="@+id/glLeft"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_password"
+            app:cornerRadius="8dp"
+            />
 
         <TextView
             android:id="@+id/tv_login_here"
@@ -183,3 +297,4 @@
     </LinearLayout>
 
 </LinearLayout>
+</androidx.core.widget.NestedScrollView>

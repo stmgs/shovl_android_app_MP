@@ -15,11 +15,12 @@
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.1275" />
         <entry key="app/src/main/res/layout/activity_ad_listing.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_bidding.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_payment.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_splashscreen.xml" value="0.165" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1725" />
       </map>
     </option>
   </component>
