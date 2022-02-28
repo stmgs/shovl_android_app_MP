@@ -5,7 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
+import android.view.View
 import com.example.shovl_android.databinding.ActivityRegisterBinding
+import com.example.shovl_android.utilities.ShovlConstants
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import java.util.regex.Pattern
 
 class RegisterActivity : AppCompatActivity() {
@@ -33,11 +37,21 @@ class RegisterActivity : AppCompatActivity() {
             password=binding.etPasswordSignup.text.toString()
             confirmPassword=binding.etConfirmPasswordSignup.text.toString()
             age=binding.etAgeSignup.text.toString().toInt()
+            name=binding.etNameSignup.text.toString()
+
             if (!validateEmail(email)|| !validatePassword(password) || !validateConfirmPassword(password,confirmPassword)
                 || !validateAge(age)){
 
             }else{
                 Log.d("reg","validation is added")
+                loading(true)
+                val db=FirebaseFirestore.getInstance()
+                val user= hashMapOf<String, Any>(
+                    KEY_EMAIL to email,
+                    KEY_PASSWORD to password,
+                    KEY_NAME to name,
+
+                )
             }
         }
 
@@ -67,7 +81,6 @@ class RegisterActivity : AppCompatActivity() {
                         //"(?=\\S+$)" +           //no white spaces
                         ".{8,}" +               //minimum 8 characters
                         "$"
-
             )
 
         // if password field is empty
@@ -111,6 +124,30 @@ class RegisterActivity : AppCompatActivity() {
             binding.textInputAgeSignup.isErrorEnabled = false
             return true
         }
+    }
+
+    private fun loading(isLoading : Boolean){
+        if (isLoading){
+            binding.pbSignup.visibility=View.VISIBLE
+            binding.btnRegister.visibility=View.GONE
+        }else{
+            binding.pbSignup.visibility=View.GONE
+            binding.btnRegister.visibility=View.VISIBLE
+        }
+    }
+
+    companion object{
+        private const val KEY_COLLECTION_USERS="users"
+        private const val KEY_EMAIL="email"
+        private const val KEY_PASSWORD="password"
+        private const val KEY_NAME="name"
+        private const val KEY_AGE="age"
+        private const val KEY_ADDRESS="location"
+        private const val KEY_IS_SIGNED_IN="isSignedIn"
+        private const val KEY_PERFERENCE_NAME="shovlPreference"
+        private const val KEY_IMAGE="dp"
+
+
     }
 
 }

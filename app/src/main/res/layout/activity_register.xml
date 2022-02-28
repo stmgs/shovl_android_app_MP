@@ -12,8 +12,9 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_signup_background"
     android:orientation="vertical"
+    android:paddingBottom="40dp"
+    android:paddingTop="40dp"
     >
 
     <ImageView
@@ -231,19 +232,31 @@
 
         </LinearLayout>
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/glRight"
+            app:layout_constraintStart_toStartOf="@+id/glLeft"
+            android:layout_marginTop="60dp"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_password">
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_marginTop="60dp"
             android:text="Register"
             android:textColor="@color/white"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/glRight"
-            app:layout_constraintStart_toStartOf="@+id/glLeft"
-            app:layout_constraintTop_toBottomOf="@+id/text_input_password"
             app:cornerRadius="8dp"
             />
+
+            <ProgressBar
+                android:id="@+id/pb_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/tv_login_here"

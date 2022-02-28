@@ -1,18 +1,23 @@
 package com.example.shovl_android
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.shovl_android.databinding.ActivityLoginBinding
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.regex.Pattern
+
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityLoginBinding
     private lateinit var email : String
     private lateinit var password:String
+    val db = FirebaseFirestore.getInstance()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +36,23 @@ class LoginActivity : AppCompatActivity() {
             if (!validateEmail(email) || !validatePassword(password)){
                 //Toast.makeText(this,"Invalid email or password", Toast.LENGTH_LONG).show()
             }else{
-                startActivity(Intent(this, AdListingActivity::class.java))
-                finish()
+                val user= hashMapOf(
+                    "email" to "sajantmg2@gmail.com",
+                    "password" to "sajantamang"
+                )
+
+                //Add document to firestore
+                db.collection("users")
+                    .add(user)
+                    .addOnSuccessListener {
+                        Log.d("success", "data stored")
+                    }
+                    .addOnFailureListener {
+                        Log.d("fire error", it.message.toString())
+                    }
+
+                //startActivity(Intent(this, AdListingActivity::class.java))
+                //finish()
             }
         }
     }
