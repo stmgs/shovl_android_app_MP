@@ -1,18 +1,23 @@
 package com.example.shovl_android
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.shovl_android.databinding.ActivityLoginBinding
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.regex.Pattern
+
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityLoginBinding
     private lateinit var email : String
     private lateinit var password:String
+    val db = FirebaseFirestore.getInstance()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,31 +25,46 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //if (Patterns.EMAIL_ADDRESS.matcher(username).matches() )
-        binding.textviewRegisterHere.setOnClickListener {
+        binding.tvNewUser.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
-            finish()
         }
 
-        binding.loginBtn.setOnClickListener {
-            email= binding.etEmailLogin.text.toString()
-            password=binding.etPasswordLogin.text.toString()
+        binding.btnLogin.setOnClickListener {
+            email= binding.etEmail.text.toString()
+            password=binding.etPassword.text.toString()
 
             if (!validateEmail(email) || !validatePassword(password)){
-                Toast.makeText(this,"Invalid email or password", Toast.LENGTH_LONG).show()
+                //Toast.makeText(this,"Invalid email or password", Toast.LENGTH_LONG).show()
             }else{
-                startActivity(Intent(this, MainActivity::class.java))
+                val user= hashMapOf(
+                    "email" to "sajantmg2@gmail.com",
+                    "password" to "sajantamang"
+                )
+
+                //Add document to firestore
+                db.collection("users")
+                    .add(user)
+                    .addOnSuccessListener {
+                        Log.d("success", "data stored")
+                    }
+                    .addOnFailureListener {
+                        Log.d("fire error", it.message.toString())
+                    }
+
+                //startActivity(Intent(this, AdListingActivity::class.java))
+                //finish()
             }
         }
     }
 
     private fun validateEmail(email: String): Boolean {
         if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            //binding.textInputEmail.error = null
-            //binding.textInputEmail.isErrorEnabled = false
+            binding.textInputEmail.error = null
+            binding.textInputEmail.isErrorEnabled = false
             return true
 
         } else {
-            //binding.textInputEmail.error = "Oops! Seems like you entered invalid email."
+            binding.textInputEmail.error = "Oops! Seems like you entered invalid email."
             return false
         }
     }
@@ -53,7 +73,7 @@ class LoginActivity : AppCompatActivity() {
         val PASSWORD_PATTERN =
             Pattern.compile(
                 "^" +
-                        //"(?=.*[0-9])" +         //at least 1 digit
+                        "(?=.*[0-9])" +         //at least 1 digit
                         //"(?=.*[a-z])" +         //at least 1 lower case letter
                         //"(?=.*[A-Z])" +         //at least 1 upper case letter
                         "(?=.*[a-zA-Z])" +      //any letter
@@ -67,15 +87,17 @@ class LoginActivity : AppCompatActivity() {
         // if password field is empty
         // it will display error message "Password can not be empty"
         if (password.isEmpty()){
+            binding.textInputPassword.setError("Password cannot be empty")
             return false
         } else if(password.length <8){
+            binding.textInputPassword.setError("Password must have at least 8 characters")
             return false
         } else if (!PASSWORD_PATTERN.matcher(password).matches()) {
-            //binding.textInputPassword.setError("Password must contain 1 special character")
+            binding.textInputPassword.setError("Password must contain 1 special character and 1 digit")
             return false
         }  else {
-            //binding.textInputPassword.setError(null)
-            //binding.textInputPassword.isErrorEnabled = false
+            binding.textInputPassword.setError(null)
+            binding.textInputPassword.isErrorEnabled = false
             return true
         }
 

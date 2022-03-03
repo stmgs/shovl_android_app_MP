@@ -50,8 +50,7 @@ class AdListingActivity : AppCompatActivity() {
         }
 
         binding.btnDoneAdListing.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+            startActivity(Intent(this, PaymentActivity::class.java))
         }
 
         binding.btnCancelAdListing.setOnClickListener {
