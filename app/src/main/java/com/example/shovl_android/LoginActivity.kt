@@ -7,6 +7,7 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shovl_android.databinding.ActivityLoginBinding
+import com.example.shovl_android.utilities.ShovlConstants
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.regex.Pattern
 
@@ -42,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
                 )
 
                 //Add document to firestore
-                db.collection("users")
+                db.collection(ShovlConstants.KEY_COLLECTION_USERS)
                     .add(user)
                     .addOnSuccessListener {
                         Log.d("success", "data stored")

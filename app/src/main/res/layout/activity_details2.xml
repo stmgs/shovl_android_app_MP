@@ -15,39 +15,34 @@
         android:weightSum="8">
 
         <Button
+            android:id="@+id/btn_pre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/btn_pre"
-            android:textAlignment="center"
             android:layout_gravity="center"
+            android:layout_weight="1"
             android:gravity="center"
-            android:text="<"
-            android:textSize="35dp"
+            android:text=""
+            android:textAlignment="center"
             android:textColor="@color/black"
-            android:background="white"
-            ></Button>
+            android:textSize="35sp" />
 
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="250dp"
             android:layout_weight="6"
-            android:id="@+id/img_view">
-        </ImageView>
+            android:id="@+id/img_view"/>
 
         <Button
+            android:id="@+id/btn_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/btn_next"
-            android:textAlignment="center"
             android:layout_gravity="center"
+            android:layout_weight="1"
             android:gravity="center"
-            android:text=">"
-            android:textSize="35dp"
+            android:text=""
+            android:textAlignment="center"
             android:textColor="@color/black"
-            android:background="white"
-            ></Button>
+            android:textSize="35sp" />
 
     </LinearLayout>
 
@@ -59,7 +54,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="35dp"
         android:text="Location"
-        android:textSize="35dp"></TextView>
+        android:textSize="35dp"/>
 
     <EditText
         android:id="@+id/et1"
@@ -73,7 +68,7 @@
         android:gravity="top"
         android:scrollbars="horizontal|vertical"
         android:text="Description of location "
-        android:verticalScrollbarPosition="defaultPosition"></EditText>
+        android:verticalScrollbarPosition="defaultPosition"/>
 
 
     <LinearLayout
@@ -93,15 +88,16 @@
                 android:id="@+id/dt_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TO:"></TextView>
+                android:text="TO:"/>
 
             <EditText
                 android:id="@+id/dp_s"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MM/DD/YY"
+                android:textColor="@color/grey"
                 android:textStyle="bold"
-                android:textColor="@color/grey"></EditText>
+                tools:ignore="TouchTargetSizeCheck"/>
 
         </LinearLayout>
 
@@ -116,14 +112,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="End:"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/dp_e"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MM/DD/YY"
-                android:textColor="@color/grey"></EditText>
+                android:textColor="@color/grey"
+                tools:ignore="TouchTargetSizeCheck"/>
 
         </LinearLayout>
 
