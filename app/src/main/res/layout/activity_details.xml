@@ -1,9 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailsActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</RelativeLayout>
+
+
+
+
+
+
+<!--     <LinearLayout-->
+<!--android:id="@+id/lin_1"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="250dp"-->
+<!--android:orientation="horizontal"-->
+<!--android:weightSum="8">-->
+
+<!--<Button-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_weight="1"-->
+<!--    android:id="@+id/btn_pre"-->
+<!--    android:textAlignment="center"-->
+<!--    android:layout_gravity="center"-->
+<!--    android:gravity="center"-->
+<!--    android:text="<"-->
+<!--    android:textSize="35dp"-->
+<!--    android:textColor="@color/black"-->
+<!--    android:background="white"-->
+<!--    ></Button>-->
+
+<!--<ImageView-->
+<!--    android:id="@+id/img_view"-->
+<!--    android:layout_width="fill_parent"-->
+<!--    android:layout_height="250dp"-->
+<!--    android:layout_weight="6"></ImageView>-->
+
+<!--<Button-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_weight="1"-->
+<!--    android:id="@+id/btn_next"-->
+<!--    android:textAlignment="center"-->
+<!--    android:layout_gravity="center"-->
+<!--    android:gravity="center"-->
+<!--    android:text=">"-->
+<!--    android:textSize="35dp"-->
+<!--    android:textColor="@color/black"-->
+<!--    android:background="white"-->
+<!--    ></Button>-->
+
+
+
+
+
+<!--</LinearLayout>-->
