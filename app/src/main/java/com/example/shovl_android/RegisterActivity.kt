@@ -42,8 +42,8 @@ class RegisterActivity : AppCompatActivity() {
             email=binding.etEmailSignup.text.toString()
             password=binding.etPasswordSignup.text.toString()
             confirmPassword=binding.etConfirmPasswordSignup.text.toString()
-            var ageString = binding.etAgeSignup.text.toString()
-            if (ageString.isNullOrEmpty()){
+            val ageString = binding.etAgeSignup.text.toString()
+            if (ageString.isEmpty()){
                 binding.textInputAgeSignup.error="Age is empty"
                 binding.textInputAgeSignup.isErrorEnabled = true
             }else{
@@ -57,10 +57,7 @@ class RegisterActivity : AppCompatActivity() {
 
             if (!validateEmail(email)|| !validatePassword(password) || !validateConfirmPassword(password,confirmPassword)
                 || !validateAge(age)){
-                println()
             }else{
-
-                Log.d("reg","validation is added")
                 loading(true)
                 val db=FirebaseFirestore.getInstance()
                 val user= hashMapOf<String, Any>(
@@ -91,6 +88,7 @@ class RegisterActivity : AppCompatActivity() {
                     }
                     .addOnFailureListener {
                         Log.d("fire error", it.message.toString())
+                        loading(false)
                         Toast.makeText(this, it.message.toString(),Toast.LENGTH_LONG).show()
                     }
             }
