@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "229491048213",
+    "project_id": "shovl-98459",
+    "storage_bucket": "shovl-98459.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229491048213:android:d3e1fcd64223347a5c731c",
+        "android_client_info": {
+          "package_name": "com.example.shovl_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "229491048213-bgjmb4g81s9qjhnplj663u5u2cj2loa4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shovl_android",
+            "certificate_hash": "c8fc57b818aa8545083848da4de66c342104cafc"
+          }
+        },
+        {
+          "client_id": "229491048213-5sucvk20te4hb2f7r5oaeg2eumlaopgo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8UmGpOaZi-lzCuU3hxeoCqsFIpMjrW0E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "229491048213-5sucvk20te4hb2f7r5oaeg2eumlaopgo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
