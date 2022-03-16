@@ -10,6 +10,6 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="enter_card_number">Enter Card Number</string>
-    <string name="$X_hr"><font size="25">$X / hr</font></string>
-    <string name="reqtime"><font size="25">Required Time</font></string>
+    <string name="$X_hr"><font size="13">$X / hr</font></string>
+    <string name="reqtime"><font size="13">Required Time</font></string>
 </resources>
