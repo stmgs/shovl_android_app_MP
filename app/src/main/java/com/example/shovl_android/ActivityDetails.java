@@ -27,7 +27,7 @@ public class ActivityDetails extends AppCompatActivity {
     EditText dp_e,dp_s;  // aa dateTXT che   ...   video ma
     ImageButton toChoose,fromChoose;  // aa "  cal "  che  ...video ma
 
-   int imageList[ ] = {R.drawable.snowimg, R.drawable.shovl_logo,R.drawable.facebook}; // imgs are only for DEMO
+   int imageList[ ] = {R.drawable.shovl_logo, R.drawable.shovl_logo,R.drawable.facebook}; // DEMO IMAGES
    int count = imageList.length;
    int currentIndex = 0;
 
