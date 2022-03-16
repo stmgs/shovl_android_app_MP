@@ -6,4 +6,71 @@
     android:layout_height="match_parent"
     tools:context=".BiddingActivity">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:text="Shovl"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="43sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="378dp"
+        android:layout_height="247dp"
+        app:srcCompat="@drawable/snowimg"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="113dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bid your price"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="415dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="168dp"
+        android:layout_height="32dp"
+        android:text="Required Time"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="538dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="365dp"
+        android:layout_height="35dp"
+        android:hint="@string/$X_hr"
+        android:textColorHint="#BDB8B8"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="471dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="365dp"
+        android:layout_height="35dp"
+        android:hint="@string/reqtime"
+        android:textColorHint="#BDB8B8"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="591dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Proceed"
+        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteY="649dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
