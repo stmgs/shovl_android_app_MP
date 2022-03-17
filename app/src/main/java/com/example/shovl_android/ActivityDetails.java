@@ -90,31 +90,7 @@ public class ActivityDetails extends AppCompatActivity {
                 img_scroller.setImageResource(imageList[currentIndex]);
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 
  // Date choose karva mate calander event call kari chee...
         toChoose.setOnClickListener(new View.OnClickListener() {
