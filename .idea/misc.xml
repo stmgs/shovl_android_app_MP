@@ -8,12 +8,13 @@
         <entry key="app/src/main/res/drawable/bg_gradient.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable/blue_tint_background.xml" value="0.25833333333333336" />
         <entry key="app/src/main/res/drawable/calender_icon.xml" value="0.25833333333333336" />
+        <entry key="app/src/main/res/drawable/clock_icon.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/grey_tint_background.xml" value="0.2222222222222222" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.26205128205128203" />
         <entry key="app/src/main/res/drawable/location_icon.xml" value="0.25833333333333336" />
         <entry key="app/src/main/res/drawable/spalsh_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.1275" />
-        <entry key="app/src/main/res/layout/activity_ad_listing.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_ad_listing.xml" value="0.13636535644531256" />
         <entry key="app/src/main/res/layout/activity_bidding.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_details2.xml" value="0.25" />
