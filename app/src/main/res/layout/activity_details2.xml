@@ -20,17 +20,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text=""
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:background="@drawable/btn_pre"
+            android:gravity="center" />
 
-        <ImageView
+        <ImageSwitcher
+            android:id="@+id/img_scroller"
             android:layout_width="fill_parent"
             android:layout_height="250dp"
-            android:layout_weight="6"
-            android:id="@+id/img_view"/>
+            android:layout_weight="6" />
 
         <Button
             android:id="@+id/btn_next"
@@ -38,11 +35,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text=""
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:background="@drawable/btn_next"
+            android:gravity="center" />
 
     </LinearLayout>
 
@@ -54,7 +48,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="35dp"
         android:text="Location"
-        android:textSize="35dp"/>
+        android:textSize="35dp" />
 
     <EditText
         android:id="@+id/et1"
@@ -68,59 +62,81 @@
         android:gravity="top"
         android:scrollbars="horizontal|vertical"
         android:text="Description of location "
-        android:verticalScrollbarPosition="defaultPosition"/>
+        android:verticalScrollbarPosition="defaultPosition" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="2"
+        android:layout_height="80dp"
         android:layout_below="@id/et1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="2">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="10dp">
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/dt_1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TO:"/>
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="TO:" />
 
             <EditText
                 android:id="@+id/dp_s"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="MM/DD/YY"
                 android:textColor="@color/grey"
                 android:textStyle="bold"
-                tools:ignore="TouchTargetSizeCheck"/>
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/toChoose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF"
+                app:srcCompat="@drawable/calender_icon" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="10dp">
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/dt_2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="End:"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/dp_e"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="MM/DD/YY"
                 android:textColor="@color/grey"
-                tools:ignore="TouchTargetSizeCheck"/>
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/fromChoose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF"
+                app:srcCompat="@drawable/calender_icon" />
 
         </LinearLayout>
 
