@@ -16,8 +16,8 @@
 
         <Button
             android:id="@+id/btn_pre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@drawable/btn_pre"
@@ -31,8 +31,8 @@
 
         <Button
             android:id="@+id/btn_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@drawable/btn_next"
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lin_1"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="35dp"
         android:text="Location"
         android:textSize="35dp" />
@@ -70,6 +70,7 @@
         android:layout_height="80dp"
         android:layout_below="@id/et1"
         android:orientation="horizontal"
+        android:id="@+id/linlayoutmiddle"
         android:weightSum="2">
 
         <LinearLayout
@@ -91,7 +92,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="MM/DD/YY"
-                android:textColor="@color/grey"
+                android:textColor="@color/primaryColor"
                 android:textStyle="bold"
                 tools:ignore="TouchTargetSizeCheck" />
 
@@ -126,7 +127,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="MM/DD/YY"
-                android:textColor="@color/grey"
+                android:textColor="@color/primaryColor"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <ImageButton
@@ -142,6 +143,12 @@
 
     </LinearLayout>
 
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/linlayoutmiddle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text=" Apply "></Button>
 
 </RelativeLayout>
