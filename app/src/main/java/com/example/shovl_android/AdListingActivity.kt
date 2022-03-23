@@ -178,7 +178,7 @@ class AdListingActivity : AppCompatActivity() {
 
 
         binding.btnDoneAdListing.setOnClickListener {
-            startActivity(Intent(this, PaymentActivity::class.java))
+            startActivity(Intent(this, ActivityDetails::class.java))
         }
 
         binding.btnCancelAdListing.setOnClickListener {
