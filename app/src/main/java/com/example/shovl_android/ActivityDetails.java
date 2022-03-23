@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ViewSwitcher;
 
+import com.example.shovl_android.databinding.ActivityDetailsBinding;
+
 import java.util.Calendar;
 
 
@@ -27,13 +29,15 @@ public class ActivityDetails extends AppCompatActivity {
     EditText dp_e,dp_s;  // aa dateTXT che   ...   video ma
     ImageButton toChoose,fromChoose;  // aa "  cal "  che  ...video ma
 
-   int imageList[ ] = {R.drawable.shovl_logo, R.drawable.shovl_logo,R.drawable.facebook}; // DEMO IMAGES
+
+
+    int imageList[ ] = {R.drawable.snow_image_1,R.drawable.snow_image_2,R.drawable.snow_image_3,R.drawable.snow_image_4}; // DEMO IMAGES
    int count = imageList.length;
    int currentIndex = 0;
 
-
  //  calander mate che aa...
-    private int mDate, mMonth, mYear;
+    private int mDate, mMonth, mYear,m1Date,m1Year,m1Month;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +47,7 @@ public class ActivityDetails extends AppCompatActivity {
         btn_next=findViewById(R.id.btn_next);
         btn_pre=findViewById(R.id.btn_pre);
         img_scroller=findViewById(R.id.img_scroller);
-        dp_e=findViewById(R.id.dp_s);
+        dp_e=findViewById(R.id.dp_e);
         dp_s=findViewById(R.id.dp_s);
         toChoose=findViewById(R.id.toChoose);
         fromChoose=findViewById(R.id.fromChoose);
@@ -53,7 +57,7 @@ public class ActivityDetails extends AppCompatActivity {
             public View makeView() {
                 ImageView imageView  = new ImageView(getApplicationContext());
                 imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                imageView.setLayoutParams(new ViewGroup.LayoutParams(
+                imageView.setLayoutParams(new ImageSwitcher.LayoutParams(
                         LinearLayout.LayoutParams.FILL_PARENT,
                         LinearLayout.LayoutParams.FILL_PARENT));
                 return imageView;
@@ -112,27 +116,24 @@ public class ActivityDetails extends AppCompatActivity {
             }
         });
 
-        fromChoose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final Calendar cal = Calendar.getInstance();
-                mDate = cal.get(Calendar.DATE);
-                mMonth = cal.get(Calendar.MONTH);
-                mYear = cal.get(Calendar.YEAR);
+      fromChoose.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              final Calendar calendar = Calendar.getInstance();
+              m1Date = calendar.get(Calendar.DATE);
+              mMonth = calendar.get(Calendar.MONTH);
+              mYear = calendar.get(Calendar.YEAR);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(ActivityDetails.this, android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, int year, int month, int date) {
-                        dp_e.setText(date+"-"+month+"-"+year);
-                    }
-                }, mYear, mMonth, mDate);
-                // past nij date select karva devi hoy to  ->  // datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis()-1000);
-                datePickerDialog.show();
-
-            }
-        });
-
-
+              DatePickerDialog datePickerDialog = new DatePickerDialog(ActivityDetails.this, android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
+                  @Override
+                  public void onDateSet(DatePicker datePicker, int year1, int month1, int date1)
+                  {
+                      dp_e.setText(date1+"-"+month1+"-"+year1);
+                  }
+              },m1Date,m1Month,m1Year);
+              datePickerDialog.show();
+          }
+      });
 
 
 
