@@ -53,13 +53,15 @@ class LoginActivity : AppCompatActivity() {
                             val snapShot = task.result.documents[0]
                             preferenceMangager.putBoolean(ShovlConstants.KEY_IS_SIGNED_IN, true)
                             preferenceMangager.putString(ShovlConstants.KEY_USER_ID, snapShot.id)
-                            preferenceMangager.putString(ShovlConstants.KEY_EMAIL, snapShot.id)
-                            preferenceMangager.putString(ShovlConstants.KEY_NAME, snapShot.id)
-                            preferenceMangager.putString(ShovlConstants.KEY_AGE, snapShot.id)
-                            preferenceMangager.putString(ShovlConstants.KEY_ADDRESS, snapShot.id)
-                            preferenceMangager.putString(ShovlConstants.KEY_GENDER, snapShot.id)
+                            preferenceMangager.putString(ShovlConstants.KEY_EMAIL, snapShot.getString(ShovlConstants.KEY_EMAIL).toString())
+                            preferenceMangager.putString(ShovlConstants.KEY_NAME, snapShot.getString(ShovlConstants.KEY_NAME).toString())
+                            preferenceMangager.putString(ShovlConstants.KEY_AGE, snapShot.getString(ShovlConstants.KEY_NAME).toString())
 
-                            val intent = Intent(this, MainActivity::class.java)
+                            preferenceMangager.putString(ShovlConstants.KEY_ADDRESS, snapShot.getString(ShovlConstants.KEY_ADDRESS).toString())
+                            preferenceMangager.putString(ShovlConstants.KEY_GENDER, snapShot.getString(ShovlConstants.KEY_GENDER).toString())
+                            preferenceMangager.putString(ShovlConstants.KEY_PHONE, snapShot.getString(ShovlConstants.KEY_PHONE).toString())
+
+                            val intent = Intent(this, AdListingActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(intent)
                         } else{

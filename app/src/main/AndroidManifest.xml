@@ -31,7 +31,6 @@
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
 
-
         </activity>
         <activity
             android:name=".DetailsActivity"
@@ -41,19 +40,21 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="false" >
+
+        </activity>
 
         <activity
             android:name=".Splashscreen"
             android:exported="true">
-<!--
-            android:theme="@style/SplashTheme">
--->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+<!--
+            android:theme="@style/SplashTheme">
+-->
 
         </activity>
         <activity
