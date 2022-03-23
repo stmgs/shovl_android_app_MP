@@ -9,6 +9,7 @@ class ShovlConstants {
          const val KEY_NAME="name"
          const val KEY_AGE="age"
          const val KEY_ADDRESS="location"
+         const val KEY_PHONE="phone"
          const val KEY_GENDER="gender"
          const val KEY_IS_SIGNED_IN="isSignedIn"
          const val KEY_USER_ID="userId"

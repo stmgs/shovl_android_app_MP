@@ -251,7 +251,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/iv_1"
+                        android:id="@+id/iv_1_add_listing"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:background="@color/greySoft"
@@ -259,23 +259,23 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
-                        android:id="@+id/iv_2"
+                        android:id="@+id/iv_2_add_listing"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_marginLeft="10dp"
                         android:background="@color/greySoft"
-                        app:layout_constraintStart_toEndOf="@id/iv_1"
+                        app:layout_constraintStart_toEndOf="@id/iv_1_add_listing"
                         app:layout_constraintTop_toTopOf="parent"
 
                         />
 
                     <ImageView
-                        android:id="@+id/iv_3"
+                        android:id="@+id/iv_3_add_listing"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_marginLeft="10dp"
                         android:background="@color/greySoft"
-                        app:layout_constraintStart_toEndOf="@id/iv_2"
+                        app:layout_constraintStart_toEndOf="@id/iv_2_add_listing"
                         app:layout_constraintTop_toTopOf="parent"
 
                         />
@@ -286,7 +286,7 @@
                         android:layout_height="100dp"
                         android:layout_marginLeft="10dp"
                         android:background="@color/teal_200"
-                        app:layout_constraintStart_toEndOf="@id/iv_3"
+                        app:layout_constraintStart_toEndOf="@id/iv_3_add_listing"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

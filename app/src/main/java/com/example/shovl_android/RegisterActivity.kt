@@ -23,6 +23,7 @@ class RegisterActivity : AppCompatActivity() {
     private  var age:Int = 18
     private lateinit var address:String
     private lateinit var gender:String
+    private lateinit var phone:String
 
     private lateinit var encodedImage : String
     private lateinit var preferenceMangager: PreferenceMangager
@@ -53,7 +54,7 @@ class RegisterActivity : AppCompatActivity() {
             name=binding.etNameSignup.text.toString()
             address = binding.etAddressSignup.text.toString()
             gender=getGenderValue()
-            println("gender from function $gender")
+            phone=binding.etPhoneSignup.text.toString()
 
             if (!validateEmail(email)|| !validatePassword(password) || !validateConfirmPassword(password,confirmPassword)
                 || !validateAge(age)){
@@ -66,7 +67,8 @@ class RegisterActivity : AppCompatActivity() {
                     ShovlConstants.KEY_NAME to name,
                     ShovlConstants.KEY_AGE to age,
                     ShovlConstants.KEY_ADDRESS to address,
-                    ShovlConstants.KEY_GENDER to gender
+                    ShovlConstants.KEY_GENDER to gender,
+                    ShovlConstants.KEY_PHONE to phone
                 )
 
                 //add user to firestore
@@ -81,8 +83,9 @@ class RegisterActivity : AppCompatActivity() {
                         preferenceMangager.putString(ShovlConstants.KEY_GENDER, gender)
                         preferenceMangager.putString(ShovlConstants.KEY_ADDRESS, address)
                         preferenceMangager.putInt(ShovlConstants.KEY_AGE, age)
+                        preferenceMangager.putString(ShovlConstants.KEY_PHONE, phone)
 
-                        val intent = Intent(this, MainActivity::class.java)
+                        val intent = Intent(this, AdListingActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                     }
