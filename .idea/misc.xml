@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/shovl_android_app_MP/app/src/main/res/layout/activity_ad_listing.xml" value="0.11145833333333334" />
+        <entry key="..\:/shovl_android_app_MP/app/src/main/res/layout/activity_bidding.xml" value="0.264" />
+        <entry key="..\:/shovl_android_app_MP/app/src/main/res/layout/activity_confirm_shoveler.xml" value="0.19429347826086957" />
+        <entry key="..\:/shovl_android_app_MP/app/src/main/res/layout/activity_details2.xml" value="0.19429347826086957" />
+        <entry key="..\:/shovl_android_app_MP/app/src/main/res/layout/activity_login.xml" value="0.19429347826086957" />
+        <entry key="..\:/shovl_android_app_MP/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/shovl_android_app_MP/app/src/main/res/layout/activity_register.xml" value="0.19429347826086957" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26205128205128203" />
         <entry key="app/src/main/res/drawable/background_gradient.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable/background_pp.xml" value="0.134" />
@@ -17,11 +24,18 @@
         <entry key="app/src/main/res/drawable/location_icon.xml" value="0.25833333333333336" />
         <entry key="app/src/main/res/drawable/spalsh_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.1275" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/layout/activity_ad_listing.xml" value="0.10100191255528071" />
         <entry key="app/src/main/res/layout/activity_bidding.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_details2.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
+=======
+        <entry key="app/src/main/res/layout/activity_ad_listing.xml" value="0.10240997314453132" />
+        <entry key="app/src/main/res/layout/activity_bidding.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_details.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_details2.xml" value="0.1197555541992188" />
+>>>>>>> 3cb676c93c52023e213322b09ffe35a59b53c389
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_payment.xml" value="0.25" />
@@ -32,7 +46,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
