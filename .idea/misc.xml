@@ -21,10 +21,10 @@
         <entry key="app/src/main/res/drawable/location_icon.xml" value="0.25833333333333336" />
         <entry key="app/src/main/res/drawable/spalsh_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.1275" />
-        <entry key="app/src/main/res/layout/activity_ad_listing.xml" value="0.13636535644531256" />
-        <entry key="app/src/main/res/layout/activity_bidding.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_ad_listing.xml" value="0.10240997314453132" />
+        <entry key="app/src/main/res/layout/activity_bidding.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_details.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_details2.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_details2.xml" value="0.1197555541992188" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_payment.xml" value="0.25" />
