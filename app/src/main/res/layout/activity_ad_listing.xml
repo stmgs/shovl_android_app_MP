@@ -63,7 +63,6 @@
             android:hint="Enter address"
             android:padding="6dp"
             android:textColor="@color/primaryColor"
-            android:textColorHint="@color/primarySecondary"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@id/guide_right"
             app:layout_constraintStart_toStartOf="@id/guide_left"
@@ -91,7 +90,6 @@
             android:hint="Enter your short and sweet description."
             android:padding="6dp"
             android:textColor="@color/primaryColor"
-            android:textColorHint="@color/primarySecondary"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@id/guide_right"
             app:layout_constraintStart_toStartOf="@id/guide_left"
@@ -120,9 +118,8 @@
             android:background="@drawable/grey_tint_background"
             android:drawableRight="@drawable/calender_icon"
             android:padding="4dp"
-            android:text="12/12/2022"
+            android:hint="12/12/2022"
             android:textColor="@color/primaryColor"
-            android:textColorHint="@color/grey"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/guide_center"
             app:layout_constraintStart_toStartOf="@id/guide_left"
@@ -149,7 +146,7 @@
             android:background="@drawable/grey_tint_background"
             android:drawableRight="@drawable/calender_icon"
             android:padding="4dp"
-            android:text="12/20/2022"
+            android:hint="12/20/2022"
             android:textColor="@color/primaryColor"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/guide_right"
@@ -180,7 +177,6 @@
             android:drawableRight="@drawable/clock_icon"
             android:hint="hh:mm"
             android:padding="4dp"
-            android:textColorHint="@color/primaryColor"
             android:textColor="@color/primaryColor"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/guide_center"
@@ -207,7 +203,6 @@
             android:background="@drawable/grey_tint_background"
             android:drawableRight="@drawable/clock_icon"
             android:hint="hh:mm"
-            android:textColorHint="@color/primaryColor"
             android:padding="4dp"
             android:textColor="@color/primaryColor"
             android:textSize="20sp"
@@ -230,16 +225,15 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/images_layout_ad_listing"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="6dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@id/guide_right"
             app:layout_constraintStart_toStartOf="@id/guide_left"
             app:layout_constraintTop_toBottomOf="@id/tv_add_pictures_ad_listing">
 
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="wrap_content"
+            <HorizontalScrollView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -282,16 +276,18 @@
 
                     <ImageView
                         android:id="@+id/iv_plus"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginLeft="10dp"
-                        android:background="@color/teal_200"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/ic_baseline_add_circle_24"
                         app:layout_constraintStart_toEndOf="@id/iv_3_add_listing"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.core.widget.NestedScrollView>
+            </HorizontalScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

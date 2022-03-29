@@ -31,7 +31,6 @@ public class ActivityDetails extends AppCompatActivity {
    int count = imageList.length;
    int currentIndex = 0;
 
-
  //  calander mate che aa...
     private int mDate, mMonth, mYear;
 
@@ -120,7 +119,10 @@ public class ActivityDetails extends AppCompatActivity {
                 mMonth = cal.get(Calendar.MONTH);
                 mYear = cal.get(Calendar.YEAR);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(ActivityDetails.this, android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog =
+                        new DatePickerDialog(ActivityDetails.this,
+                                android.R.style.Theme_DeviceDefault_Dialog,
+                                new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int date) {
                         dp_e.setText(date+"-"+month+"-"+year);

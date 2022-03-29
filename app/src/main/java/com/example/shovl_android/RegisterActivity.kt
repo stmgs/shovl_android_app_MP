@@ -10,6 +10,8 @@ import android.widget.Toast
 import com.example.shovl_android.databinding.ActivityRegisterBinding
 import com.example.shovl_android.utilities.PreferenceMangager
 import com.example.shovl_android.utilities.ShovlConstants
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import java.util.regex.Pattern
@@ -28,11 +30,15 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var encodedImage : String
     private lateinit var preferenceMangager: PreferenceMangager
 
+    private lateinit var auth : FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         preferenceMangager = PreferenceMangager(applicationContext)
+
+        auth = FirebaseAuth.getInstance()
 
         binding.tvLoginHere.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
@@ -63,7 +69,6 @@ class RegisterActivity : AppCompatActivity() {
                 val db=FirebaseFirestore.getInstance()
                 val user= hashMapOf<String, Any>(
                     ShovlConstants.KEY_EMAIL to email,
-                    ShovlConstants.KEY_PASSWORD to password,
                     ShovlConstants.KEY_NAME to name,
                     ShovlConstants.KEY_AGE to age,
                     ShovlConstants.KEY_ADDRESS to address,
@@ -71,29 +76,47 @@ class RegisterActivity : AppCompatActivity() {
                     ShovlConstants.KEY_PHONE to phone
                 )
 
-                //add user to firestore
-                db.collection(ShovlConstants.KEY_COLLECTION_USERS)
-                    .add(user)
-                    .addOnSuccessListener {
-                        Log.d("success", "data stored")
-                        preferenceMangager.putBoolean(ShovlConstants.KEY_IS_SIGNED_IN, true)
-                        preferenceMangager.putString(ShovlConstants.KEY_USER_ID, it.id)
-                        preferenceMangager.putString(ShovlConstants.KEY_EMAIL, email)
-                        preferenceMangager.putString(ShovlConstants.KEY_NAME, name)
-                        preferenceMangager.putString(ShovlConstants.KEY_GENDER, gender)
-                        preferenceMangager.putString(ShovlConstants.KEY_ADDRESS, address)
-                        preferenceMangager.putInt(ShovlConstants.KEY_AGE, age)
-                        preferenceMangager.putString(ShovlConstants.KEY_PHONE, phone)
+                /*create user in authentication tab*/
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this,"Account Created.",Toast.LENGTH_SHORT).show()
+                            //add user to firestore
+                            db.collection(ShovlConstants.KEY_COLLECTION_USERS)
+                                .add(user)
+                                .addOnSuccessListener {
+                                    Log.d("success", "data stored")
+                                    preferenceMangager.putBoolean(ShovlConstants.KEY_IS_SIGNED_IN, true)
+                                    preferenceMangager.putString(ShovlConstants.KEY_USER_ID, it.id)
+                                    preferenceMangager.putString(ShovlConstants.KEY_EMAIL, email)
+                                    preferenceMangager.putString(ShovlConstants.KEY_NAME, name)
+                                    preferenceMangager.putString(ShovlConstants.KEY_GENDER, gender)
+                                    preferenceMangager.putString(ShovlConstants.KEY_ADDRESS, address)
+                                    preferenceMangager.putInt(ShovlConstants.KEY_AGE, age)
+                                    preferenceMangager.putString(ShovlConstants.KEY_PHONE, phone)
 
-                        val intent = Intent(this, AdListingActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        startActivity(intent)
+                                    val intent = Intent(this, AdListingActivity::class.java)
+                                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                    startActivity(intent)
+                                }
+                                .addOnFailureListener {
+                                    Log.d("fire error", it.message.toString())
+                                    loading(false)
+                                    Toast.makeText(this, it.message.toString(),Toast.LENGTH_LONG).show()
+                                    val createdUser = FirebaseAuth.getInstance().currentUser
+                                    createdUser?.delete()
+                                        ?.addOnCompleteListener { task ->
+                                            if (task.isSuccessful) {
+                                                Log.d("user del", "User account deleted.")
+                                            }
+                                        }
+
+                                }
+                        } else {
+                            Toast.makeText(this,"Cannot create account", Toast.LENGTH_SHORT).show()
+                        }
                     }
-                    .addOnFailureListener {
-                        Log.d("fire error", it.message.toString())
-                        loading(false)
-                        Toast.makeText(this, it.message.toString(),Toast.LENGTH_LONG).show()
-                    }
+
             }
         }
 

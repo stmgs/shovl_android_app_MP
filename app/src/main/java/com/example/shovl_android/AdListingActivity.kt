@@ -9,7 +9,10 @@ import android.view.View
 import android.widget.DatePicker
 import android.widget.TextView
 import android.widget.TimePicker
+import android.widget.Toast
 import com.example.shovl_android.databinding.ActivityAdListingBinding
+import com.example.shovl_android.utilities.ShovlConstants
+import com.google.firebase.firestore.FirebaseFirestore
 import java.text.DateFormat
 import java.util.*
 
@@ -178,7 +181,36 @@ class AdListingActivity : AppCompatActivity() {
 
 
         binding.btnDoneAdListing.setOnClickListener {
-            startActivity(Intent(this, ActivityDetails::class.java))
+            val address = binding.etAddressAdListing.text.toString()
+            val description = binding.etDescriptionAdListing.text.toString()
+            val dateFrom = binding.etDateFromAdListing.text.toString()
+            val dateTo = binding.etDateToAdListing.text.toString()
+            val timeFrom = binding.etTimeFromAdListing.text.toString()
+            val timeTo = binding.etTimeToAdListing.text.toString()
+
+            val posts= hashMapOf<String, Any>(
+                ShovlConstants.KEY_ADDRESS_POST to address,
+                ShovlConstants.KEY_DESCRIPTION to description,
+                ShovlConstants.KEY_DATE_FROM to dateFrom,
+                ShovlConstants.KEY_DATE_TO to dateTo,
+                ShovlConstants.KEY_TIME_FROM to timeFrom,
+                ShovlConstants.KEY_TIME_TO to timeTo,
+            )
+
+
+            val db= FirebaseFirestore.getInstance()
+            db.collection(ShovlConstants.KEY_COLLECTION_POSTS)
+                .add(posts)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Ad has been posted.", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, PaymentActivity::class.java))
+
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "There were some errors posting the add", Toast.LENGTH_SHORT).show()
+
+                }
+
         }
 
         binding.btnCancelAdListing.setOnClickListener {
