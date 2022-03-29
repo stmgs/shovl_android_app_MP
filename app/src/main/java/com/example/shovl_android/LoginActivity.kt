@@ -4,9 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shovl_android.databinding.ActivityLoginBinding
+import com.example.shovl_android.utilities.PreferenceMangager
 import com.example.shovl_android.utilities.ShovlConstants
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.regex.Pattern
@@ -17,13 +19,13 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding : ActivityLoginBinding
     private lateinit var email : String
     private lateinit var password:String
-    val db = FirebaseFirestore.getInstance()
-
+    private lateinit var preferenceMangager: PreferenceMangager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        preferenceMangager = PreferenceMangager(applicationContext)
 
         //if (Patterns.EMAIL_ADDRESS.matcher(username).matches() )
         binding.tvNewUser.setOnClickListener {
@@ -31,30 +33,55 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
+            loading(true)
             email= binding.etEmail.text.toString()
             password=binding.etPassword.text.toString()
 
             if (!validateEmail(email) || !validatePassword(password)){
                 //Toast.makeText(this,"Invalid email or password", Toast.LENGTH_LONG).show()
             }else{
-                val user= hashMapOf(
-                    "email" to "sajantmg2@gmail.com",
-                    "password" to "sajantamang"
-                )
-
-                //Add document to firestore
+                val db=FirebaseFirestore.getInstance()
                 db.collection(ShovlConstants.KEY_COLLECTION_USERS)
-                    .add(user)
-                    .addOnSuccessListener {
-                        Log.d("success", "data stored")
-                    }
-                    .addOnFailureListener {
-                        Log.d("fire error", it.message.toString())
-                    }
+                    .whereEqualTo(ShovlConstants.KEY_EMAIL, email)
+                    .whereEqualTo(ShovlConstants.KEY_PASSWORD, password)
+                    .get()
+                    .addOnCompleteListener {task->
+                        if (task.isSuccessful
+                            && task.result!=null
+                            && task.result.documents.size > 0 ){
 
+                            val snapShot = task.result.documents[0]
+                            preferenceMangager.putBoolean(ShovlConstants.KEY_IS_SIGNED_IN, true)
+                            preferenceMangager.putString(ShovlConstants.KEY_USER_ID, snapShot.id)
+                            preferenceMangager.putString(ShovlConstants.KEY_EMAIL, snapShot.getString(ShovlConstants.KEY_EMAIL).toString())
+                            preferenceMangager.putString(ShovlConstants.KEY_NAME, snapShot.getString(ShovlConstants.KEY_NAME).toString())
+                            preferenceMangager.putString(ShovlConstants.KEY_AGE, snapShot.getString(ShovlConstants.KEY_NAME).toString())
+
+                            preferenceMangager.putString(ShovlConstants.KEY_ADDRESS, snapShot.getString(ShovlConstants.KEY_ADDRESS).toString())
+                            preferenceMangager.putString(ShovlConstants.KEY_GENDER, snapShot.getString(ShovlConstants.KEY_GENDER).toString())
+                            preferenceMangager.putString(ShovlConstants.KEY_PHONE, snapShot.getString(ShovlConstants.KEY_PHONE).toString())
+
+                            val intent = Intent(this, MainActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            startActivity(intent)
+                        } else{
+                            loading(false)
+                            Toast.makeText(this, "Email or password is incorrect!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 //startActivity(Intent(this, AdListingActivity::class.java))
                 //finish()
             }
+        }
+    }
+
+    private fun loading(isLoading : Boolean){
+        if (isLoading){
+            binding.pbLogIn.visibility= View.VISIBLE
+            binding.btnLogin.visibility= View.GONE
+        }else{
+            binding.pbLogIn.visibility= View.GONE
+            binding.btnLogin.visibility= View.VISIBLE
         }
     }
 

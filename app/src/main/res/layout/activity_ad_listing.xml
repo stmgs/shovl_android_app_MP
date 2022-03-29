@@ -32,6 +32,15 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_ad_listing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="List your ad"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/primaryColor"
+            app:titleTextColor="@color/white"/>
+
         <TextView
             android:id="@+id/tv_address_ad_listing"
             android:layout_width="wrap_content"
@@ -42,7 +51,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/guide_left"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/toolbar_ad_listing" />
 
         <EditText
             android:id="@+id/et_address_ad_listing"
@@ -169,8 +178,10 @@
             android:layout_marginStart="4dp"
             android:background="@drawable/grey_tint_background"
             android:drawableRight="@drawable/clock_icon"
-            android:hint="07:24"
+            android:hint="hh:mm"
             android:padding="4dp"
+            android:textColorHint="@color/primaryColor"
+            android:textColor="@color/primaryColor"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/guide_center"
             app:layout_constraintStart_toStartOf="@id/guide_left"
@@ -195,8 +206,10 @@
             android:layout_margin="6dp"
             android:background="@drawable/grey_tint_background"
             android:drawableRight="@drawable/clock_icon"
-            android:hint="09:00"
+            android:hint="hh:mm"
+            android:textColorHint="@color/primaryColor"
             android:padding="4dp"
+            android:textColor="@color/primaryColor"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/guide_right"
             app:layout_constraintStart_toEndOf="@+id/guide_center"
@@ -230,14 +243,15 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/iv_1"
+                        android:id="@+id/iv_1_add_listing"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:background="@color/greySoft"
@@ -245,23 +259,23 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
-                        android:id="@+id/iv_2"
+                        android:id="@+id/iv_2_add_listing"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_marginLeft="10dp"
                         android:background="@color/greySoft"
-                        app:layout_constraintStart_toEndOf="@id/iv_1"
+                        app:layout_constraintStart_toEndOf="@id/iv_1_add_listing"
                         app:layout_constraintTop_toTopOf="parent"
 
                         />
 
                     <ImageView
-                        android:id="@+id/iv_3"
+                        android:id="@+id/iv_3_add_listing"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_marginLeft="10dp"
                         android:background="@color/greySoft"
-                        app:layout_constraintStart_toEndOf="@id/iv_2"
+                        app:layout_constraintStart_toEndOf="@id/iv_2_add_listing"
                         app:layout_constraintTop_toTopOf="parent"
 
                         />
@@ -272,7 +286,7 @@
                         android:layout_height="100dp"
                         android:layout_marginLeft="10dp"
                         android:background="@color/teal_200"
-                        app:layout_constraintStart_toEndOf="@id/iv_3"
+                        app:layout_constraintStart_toEndOf="@id/iv_3_add_listing"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
