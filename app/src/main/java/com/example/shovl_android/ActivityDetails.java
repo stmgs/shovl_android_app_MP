@@ -15,25 +15,20 @@ import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import java.awt.font.TextAttribute;
 import java.util.Calendar;
 
 
 public class ActivityDetails extends AppCompatActivity {
 
-    ImageSwitcher img_scroller;
+
     Button btn_pre,btn_next;
-    EditText dp_e,dp_s;  // aa dateTXT che   ...   video ma
-    ImageButton toChoose,fromChoose;  // aa "  cal "  che  ...video ma
-
-   int imageList[ ] = {R.drawable.snow_image_1, R.drawable.snow_image_2,R.drawable.snow_image_3,R.drawable.snow_image_4}; // DEMO IMAGES
-   int count = imageList.length;
-   int currentIndex = 0;
+    TextView ad_tv_start, ad_tv_end, ad_tv_from,ad_tv_to;
 
 
- //  calander mate che aa...
-    private int mDate, mMonth, mYear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +37,87 @@ public class ActivityDetails extends AppCompatActivity {
 
         btn_next=findViewById(R.id.btn_next);
         btn_pre=findViewById(R.id.btn_pre);
-        img_scroller=findViewById(R.id.img_scroller);
+
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+package com.example.shovl_android;
+
+        import androidx.appcompat.app.AppCompatActivity;
+
+        import android.app.DatePickerDialog;
+        import android.content.DialogInterface;
+        import android.os.Bundle;
+        import android.provider.CalendarContract;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.Button;
+        import android.widget.DatePicker;
+        import android.widget.EditText;
+        import android.widget.ImageButton;
+        import android.widget.ImageSwitcher;
+        import android.widget.ImageView;
+        import android.widget.LinearLayout;
+        import android.widget.ViewSwitcher;
+
+        import java.util.Calendar;
+
+
+public class ActivityDetails extends AppCompatActivity {
+
+    // ImageSwitcher img_scroller;
+    Button btn_pre,btn_next;
+    // EditText dp_e,dp_s;  // aa dateTXT che   ...   video ma
+    //  ImageButton toChoose,fromChoose;  // aa "  cal "  che  ...video ma
+*/
+/*
+
+   int imageList[ ] = {R.drawable.snow_image_1, R.drawable.snow_image_2,R.drawable.snow_image_3,R.drawable.snow_image_4}; // DEMO IMAGES
+   int count = imageList.length;
+   int currentIndex = 0;
+*//*
+
+
+
+    //  calander mate che aa...
+//    private int mDate, mMonth, mYear;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_details2);
+
+        btn_next=findViewById(R.id.btn_next);
+        btn_pre=findViewById(R.id.btn_pre);
+
+
+        */
+/* img_scroller=findViewById(R.id.img_scroller);
         dp_e=findViewById(R.id.dp_e);
         dp_s=findViewById(R.id.dp_s);
         toChoose=findViewById(R.id.toChoose);
-        fromChoose=findViewById(R.id.fromChoose);
+        fromChoose=findViewById(R.id.fromChoose);*//*
 
+*/
+/*
         img_scroller.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
             public View makeView() {
@@ -90,7 +160,7 @@ public class ActivityDetails extends AppCompatActivity {
                 img_scroller.setImageResource(imageList[currentIndex]);
             }
         });
-        
+
 
  // Date choose karva mate calander event call kari chee...
         toChoose.setOnClickListener(new View.OnClickListener() {
@@ -132,9 +202,11 @@ public class ActivityDetails extends AppCompatActivity {
             }
         });
 
+*//*
+
 
 
 
 
     }
-}
+}*/
