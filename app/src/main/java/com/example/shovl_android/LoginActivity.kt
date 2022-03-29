@@ -61,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
                             preferenceMangager.putString(ShovlConstants.KEY_GENDER, snapShot.getString(ShovlConstants.KEY_GENDER).toString())
                             preferenceMangager.putString(ShovlConstants.KEY_PHONE, snapShot.getString(ShovlConstants.KEY_PHONE).toString())
 
-                            val intent = Intent(this, AdListingActivity::class.java)
+                            val intent = Intent(this, MainActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(intent)
                         } else{

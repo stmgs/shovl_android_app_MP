@@ -22,7 +22,7 @@ class Splashscreen : AppCompatActivity() {
         println("is signed in : ${preferenceMangager.getBoolean(ShovlConstants.KEY_IS_SIGNED_IN)}")
 
         if (preferenceMangager.getBoolean(ShovlConstants.KEY_IS_SIGNED_IN)){
-                val intent = Intent(this, AdListingActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
 

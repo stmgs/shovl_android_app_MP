@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/shovl_android_app_MP/app/src/main/res/layout/activity_bidding.xml" value="0.11145833333333334" />
+        <entry key="..\:/shovl_android_app_MP/app/src/main/res/layout/activity_ad_listing.xml" value="0.11145833333333334" />
+        <entry key="..\:/shovl_android_app_MP/app/src/main/res/layout/activity_bidding.xml" value="0.264" />
+        <entry key="..\:/shovl_android_app_MP/app/src/main/res/layout/activity_confirm_shoveler.xml" value="0.19429347826086957" />
+        <entry key="..\:/shovl_android_app_MP/app/src/main/res/layout/activity_details2.xml" value="0.19429347826086957" />
+        <entry key="..\:/shovl_android_app_MP/app/src/main/res/layout/activity_login.xml" value="0.19429347826086957" />
+        <entry key="..\:/shovl_android_app_MP/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/shovl_android_app_MP/app/src/main/res/layout/activity_register.xml" value="0.19429347826086957" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26205128205128203" />
         <entry key="app/src/main/res/drawable/background_gradient.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable/bg_gradient.xml" value="0.1275" />
