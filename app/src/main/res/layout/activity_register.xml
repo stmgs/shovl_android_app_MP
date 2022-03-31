@@ -155,7 +155,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Name"
                 android:background="@drawable/grey_tint_background"
-
+                android:inputType="textPersonName"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -230,7 +230,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Phone Number"
                 android:background="@drawable/grey_tint_background"
-
+                android:inputType="phone"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>

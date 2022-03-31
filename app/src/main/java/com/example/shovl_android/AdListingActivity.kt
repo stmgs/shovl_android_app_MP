@@ -1,24 +1,34 @@
 package com.example.shovl_android
 
 import android.app.DatePickerDialog
+import android.app.ProgressDialog
 import android.app.TimePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
-import android.widget.DatePicker
-import android.widget.TextView
-import android.widget.TimePicker
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.shovl_android.adapters.ImagesRvAdapterAdList
 import com.example.shovl_android.databinding.ActivityAdListingBinding
 import com.example.shovl_android.utilities.ShovlConstants
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
+
 
 class AdListingActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityAdListingBinding
+    //lateinit var imageUri : Uri
+    var photosUrls = ArrayList<Uri>()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +49,7 @@ class AdListingActivity : AppCompatActivity() {
 
 
         binding.etDateFromAdListing.text = currentDateString
+
         binding.etDateFromAdListing.setOnClickListener {
             //showDatePickerDialog(it, c)
             val dialog = DatePickerDialog(this, object : DatePickerDialog.OnDateSetListener{
@@ -179,9 +190,20 @@ class AdListingActivity : AppCompatActivity() {
             timePicker.show()
         }
 
+        binding.ivAddImageAdList.setOnClickListener {
+            selectImage()
+        }
+
+        binding.rvAddImagePost.also {
+            it.layoutManager= LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            it.setHasFixedSize(true)
+            it.adapter =
+                ImagesRvAdapterAdList(photosUrls)
+        }
 
         binding.btnDoneAdListing.setOnClickListener {
             val address = binding.etAddressAdListing.text.toString()
+            val postTitle = binding.etPostTitleAdListing.text.toString()
             val description = binding.etDescriptionAdListing.text.toString()
             val dateFrom = binding.etDateFromAdListing.text.toString()
             val dateTo = binding.etDateToAdListing.text.toString()
@@ -190,6 +212,7 @@ class AdListingActivity : AppCompatActivity() {
 
             val posts= hashMapOf<String, Any>(
                 ShovlConstants.KEY_ADDRESS_POST to address,
+                ShovlConstants.KEY_TITLE_POST to postTitle,
                 ShovlConstants.KEY_DESCRIPTION to description,
                 ShovlConstants.KEY_DATE_FROM to dateFrom,
                 ShovlConstants.KEY_DATE_TO to dateTo,
@@ -203,12 +226,12 @@ class AdListingActivity : AppCompatActivity() {
                 .add(posts)
                 .addOnSuccessListener {
                     Toast.makeText(this, "Ad has been posted.", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, PaymentActivity::class.java))
+                    uploadImage()
 
                 }
                 .addOnFailureListener {
-                    Toast.makeText(this, "There were some errors posting the add", Toast.LENGTH_SHORT).show()
-
+                    Toast.makeText(this, "There were some errors posting the ad. Please try again." +
+                            "Sorry, for the inconvinience", Toast.LENGTH_SHORT).show()
                 }
 
         }
@@ -220,9 +243,84 @@ class AdListingActivity : AppCompatActivity() {
 
     }
 
-    private fun showDatePickerDialog(view: View?, c: Calendar) {
+    private fun uploadImage(){
+        val pb = ProgressDialog(this)
+        pb.setMessage("Uploading photos")
+        pb.setCancelable(false)
+        pb.show()
+
+        val storageRef = FirebaseStorage.getInstance().getReference(ShovlConstants.IMAGES_REF_FIREBASE)
+
+        var i = 0
+        while (i < photosUrls.size) {
+            val image: Uri = photosUrls[i]
+            val imagename = storageRef.child(image.lastPathSegment.toString())
+            imagename.putFile(photosUrls[i]).addOnSuccessListener {
+                    val url = image.toString()
+                    sendLink(url)
+
+            }.addOnFailureListener {
+
+            }
+            i++
+        }
+
+        startActivity(Intent(this, PaymentActivity::class.java))
+
 
     }
+
+    private fun sendLink(url: String) {
+        val hashMap = HashMap<String, String>()
+        hashMap["link"] = url
+
+        val firestore = FirebaseFirestore.getInstance()
+        val docId = firestore.collection(ShovlConstants.KEY_COLLECTION_POSTS).document().id
+
+
+    }
+
+
+    private fun selectImage(){
+        val intent = Intent(Intent.ACTION_PICK
+            , MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        intent.type = "image/*"
+        val mimeType = arrayOf("image/jpeg", "image/png", "image/jpg")
+        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeType)
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+
+
+        startActivityForResult(intent, ShovlConstants.GALLERY_IMAGE_PICK)
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == ShovlConstants.GALLERY_IMAGE_PICK && resultCode== RESULT_OK){
+
+           /* if (data?.clipData != null){
+                val count = data.clipData!!.itemCount
+                var curentIndex = 0
+
+                while (curentIndex<count){
+                    var imageUri= data.clipData!!.getItemAt(curentIndex).uri
+
+                }
+
+            }*/
+            photosUrls.add(data?.data!!)
+            binding.rvAddImagePost.adapter?.notifyDataSetChanged()
+            //binding.iv1AddListing.setImageURI(imageUri)
+            //set the recyclerview here
+
+
+        }
+    }
+
+
+
+
 
 }
 

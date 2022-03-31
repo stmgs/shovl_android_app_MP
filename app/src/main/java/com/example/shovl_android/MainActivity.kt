@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.shovl_android.databinding.ActivityMainBinding
 import com.example.shovl_android.utilities.PreferenceMangager
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var preferenceMangager: PreferenceMangager
+    private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,9 +20,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         preferenceMangager = PreferenceMangager(applicationContext)
+        auth = FirebaseAuth.getInstance()
 
         binding.tvSignOut.setOnClickListener {
             preferenceMangager.clear()
+            auth.signOut()
 
             startActivity(Intent(this, LoginActivity::class.java))
         }
