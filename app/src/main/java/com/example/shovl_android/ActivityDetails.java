@@ -95,10 +95,15 @@ public class ActivityDetails extends AppCompatActivity {
    int currentIndex = 0;
 *//*
 
+<<<<<<< HEAD
+ //  calander mate che aa...
+    private int mDate, mMonth, mYear;
+=======
 
 
     //  calander mate che aa...
 //    private int mDate, mMonth, mYear;
+>>>>>>> 3cb676c93c52023e213322b09ffe35a59b53c389
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,7 +195,10 @@ public class ActivityDetails extends AppCompatActivity {
                 mMonth = cal.get(Calendar.MONTH);
                 mYear = cal.get(Calendar.YEAR);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(ActivityDetails.this, android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog =
+                        new DatePickerDialog(ActivityDetails.this,
+                                android.R.style.Theme_DeviceDefault_Dialog,
+                                new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int date) {
                         dp_e.setText(date+"-"+month+"-"+year);
