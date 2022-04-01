@@ -7,12 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tv_sign_out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="sign out"/>
-
     <Button
         android:id="@+id/bidding"
         android:layout_width="113dp"
