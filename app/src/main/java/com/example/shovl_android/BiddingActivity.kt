@@ -80,29 +80,37 @@ class BiddingActivity : AppCompatActivity() {
         binding.proceed.setOnClickListener {
             val price = binding.price.text.toString()
             val time = binding.time.text.toString()
-            val db=FirebaseFirestore.getInstance()
-            val bidding = hashMapOf<String, Any>(
-                ShovlConstants.KEY_BID_PRICE to price,
-                ShovlConstants.KEY_REQ_TIME to time
-            )
+            if(price.isNullOrEmpty())
+            {
+                Toast.makeText(this, "Please Enter Valid Price", Toast.LENGTH_SHORT).show()
+            }else if(time.isNullOrEmpty()){
+                Toast.makeText(this, "Please Enter Valid Time", Toast.LENGTH_SHORT).show()
+            }else {
+                val db = FirebaseFirestore.getInstance()
+                val bidding = hashMapOf<String, Any>(
+                    ShovlConstants.KEY_BID_PRICE to price,
+                    ShovlConstants.KEY_REQ_TIME to time
+                )
 
-            //add data to firebase
-            db.collection(ShovlConstants.KEY_COLLECTION_BIDDING)
-                .add(bidding)
-                .addOnSuccessListener {
-                    Log.d("success", "data stored")
-                    preferenceMangager.putString(ShovlConstants.KEY_BID_PRICE,price)
-                    preferenceMangager.putString(ShovlConstants.KEY_REQ_TIME,time)
+                //add data to firebase
+                db.collection(ShovlConstants.KEY_COLLECTION_BIDDING)
+                    .add(bidding)
+                    .addOnSuccessListener {
+                        Log.d("success", "data stored")
+                        preferenceMangager.putString(ShovlConstants.KEY_BID_PRICE, price)
+                        preferenceMangager.putString(ShovlConstants.KEY_REQ_TIME, time)
 
-                    val intent = Intent(this, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(intent)
-                }
-                .addOnFailureListener {
-                    Log.d("fire error", it.message.toString())
-                    loading(false)
-                    Toast.makeText(this, it.message.toString(),Toast.LENGTH_LONG).show()
-                }
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.flags =
+                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                    }
+                    .addOnFailureListener {
+                        Log.d("fire error", it.message.toString())
+                        loading(false)
+                        Toast.makeText(this, it.message.toString(), Toast.LENGTH_LONG).show()
+                    }
+            }
         }
 
         val cancel = findViewById(R.id.cancel) as Button
