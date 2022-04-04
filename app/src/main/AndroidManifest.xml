@@ -21,6 +21,12 @@
             android:name=".BiddingActivity"
             android:exported="false" />
         <activity
+            android:name=".EditProfile"
+            android:exported="false" />
+        <activity
+            android:name=".ViewProfile"
+            android:exported="false" />
+        <activity
             android:name=".PaymentActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
