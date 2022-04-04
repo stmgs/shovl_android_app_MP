@@ -61,6 +61,7 @@
             android:background="@drawable/grey_tint_background"
             android:drawableStart="@drawable/location_icon"
             android:hint="Enter address"
+            android:padding="6dp"
             android:textColor="@color/primaryColor"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@id/guide_right"

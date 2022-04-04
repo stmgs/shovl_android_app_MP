@@ -41,13 +41,15 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-            loading(true)
             email = binding.etEmail.text.toString()
             password = binding.etPassword.text.toString()
 
             if (!validateEmail(email) || !validatePassword(password)) {
+                loading(false)
+
                 //Toast.makeText(this,"Invalid email or password", Toast.LENGTH_LONG).show()
             } else {
+                loading(true)
 
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -110,6 +112,8 @@ class LoginActivity : AppCompatActivity() {
                                 }
 
                             }.addOnFailureListener { exception ->
+                                loading(false)
+
                                 Toast.makeText(
                                     applicationContext,
                                     exception.localizedMessage,
@@ -128,7 +132,7 @@ class LoginActivity : AppCompatActivity() {
     private fun loading(isLoading : Boolean){
         if (isLoading){
             binding.pbLogIn.visibility= View.VISIBLE
-            binding.btnLogin.visibility= View.GONE
+            binding.btnLogin.visibility= View.INVISIBLE
         }else{
             binding.pbLogIn.visibility= View.GONE
             binding.btnLogin.visibility= View.VISIBLE

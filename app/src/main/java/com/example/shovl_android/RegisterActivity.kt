@@ -113,6 +113,7 @@ class RegisterActivity : AppCompatActivity() {
 
                                 }
                         } else {
+                            loading(false)
                             Toast.makeText(this,"Cannot create account", Toast.LENGTH_SHORT).show()
                         }
                     }

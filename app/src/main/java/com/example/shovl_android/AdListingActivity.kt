@@ -28,8 +28,6 @@ class AdListingActivity : AppCompatActivity() {
     //lateinit var imageUri : Uri
     var photosUrls = ArrayList<Uri>()
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityAdListingBinding.inflate(layoutInflater)
@@ -210,29 +208,36 @@ class AdListingActivity : AppCompatActivity() {
             val timeFrom = binding.etTimeFromAdListing.text.toString()
             val timeTo = binding.etTimeToAdListing.text.toString()
 
-            val posts= hashMapOf<String, Any>(
-                ShovlConstants.KEY_ADDRESS_POST to address,
-                ShovlConstants.KEY_TITLE_POST to postTitle,
-                ShovlConstants.KEY_DESCRIPTION to description,
-                ShovlConstants.KEY_DATE_FROM to dateFrom,
-                ShovlConstants.KEY_DATE_TO to dateTo,
-                ShovlConstants.KEY_TIME_FROM to timeFrom,
-                ShovlConstants.KEY_TIME_TO to timeTo,
-            )
+            if (address.isEmpty()||postTitle.isEmpty()||description.isEmpty()||dateFrom.isEmpty()
+                ||dateTo.isEmpty()||timeFrom.isEmpty()||timeTo.isEmpty()){
+                Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
+            } else{
+                val posts= hashMapOf<String, Any>(
+                    ShovlConstants.KEY_ADDRESS_POST to address,
+                    ShovlConstants.KEY_TITLE_POST to postTitle,
+                    ShovlConstants.KEY_DESCRIPTION to description,
+                    ShovlConstants.KEY_DATE_FROM to dateFrom,
+                    ShovlConstants.KEY_DATE_TO to dateTo,
+                    ShovlConstants.KEY_TIME_FROM to timeFrom,
+                    ShovlConstants.KEY_TIME_TO to timeTo,
+                )
 
 
-            val db= FirebaseFirestore.getInstance()
-            db.collection(ShovlConstants.KEY_COLLECTION_POSTS)
-                .add(posts)
-                .addOnSuccessListener {
-                    Toast.makeText(this, "Ad has been posted.", Toast.LENGTH_SHORT).show()
-                    uploadImage()
+                val db= FirebaseFirestore.getInstance()
+                db.collection(ShovlConstants.KEY_COLLECTION_POSTS)
+                    .add(posts)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Ad has been posted.", Toast.LENGTH_SHORT).show()
+                        uploadImage()
 
-                }
-                .addOnFailureListener {
-                    Toast.makeText(this, "There were some errors posting the ad. Please try again." +
-                            "Sorry, for the inconvinience", Toast.LENGTH_SHORT).show()
-                }
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "There were some errors posting the ad. Please try again." +
+                                "Sorry, for the inconvinience", Toast.LENGTH_SHORT).show()
+                    }
+            }
+
+
 
         }
 
@@ -253,10 +258,12 @@ class AdListingActivity : AppCompatActivity() {
 
         var i = 0
         while (i < photosUrls.size) {
+            println("inside while loop")
             val image: Uri = photosUrls[i]
             val imagename = storageRef.child(image.lastPathSegment.toString())
             imagename.putFile(photosUrls[i]).addOnSuccessListener {
                     val url = image.toString()
+                println("image url  $url")
                     sendLink(url)
 
             }.addOnFailureListener {
@@ -277,9 +284,13 @@ class AdListingActivity : AppCompatActivity() {
         val firestore = FirebaseFirestore.getInstance()
         val docId = firestore.collection(ShovlConstants.KEY_COLLECTION_POSTS).document().id
 
+        firestore.collection(ShovlConstants.KEY_COLLECTION_POSTS)
+            .add(hashMap)
+            .addOnSuccessListener {
+
+            }
 
     }
-
 
     private fun selectImage(){
         val intent = Intent(Intent.ACTION_PICK
