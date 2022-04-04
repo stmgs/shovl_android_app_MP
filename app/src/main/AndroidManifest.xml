@@ -43,6 +43,12 @@
             android:exported="false" >
 
         </activity>
+        <activity
+            android:name=".EditProfile"
+            android:exported="false" />
+        <activity
+            android:name=".ViewProfile"
+            android:exported="false" />
 
         <activity
             android:name=".Splashscreen"
