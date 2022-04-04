@@ -7,19 +7,18 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shovl_android.adapters.ImagesRvAdapterAdList
 import com.example.shovl_android.databinding.ActivityAdListingBinding
 import com.example.shovl_android.utilities.ShovlConstants
-import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class AdListingActivity : AppCompatActivity() {
@@ -27,11 +26,14 @@ class AdListingActivity : AppCompatActivity() {
     private lateinit var binding : ActivityAdListingBinding
     //lateinit var imageUri : Uri
     var photosUrls = ArrayList<Uri>()
+    val imageUrlList = ArrayList<String>()
+    private lateinit var pb : ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityAdListingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        pb = ProgressDialog(this)
 
         //Places.initialize(applicationContext, "")
 
@@ -228,7 +230,8 @@ class AdListingActivity : AppCompatActivity() {
                     .add(posts)
                     .addOnSuccessListener {
                         Toast.makeText(this, "Ad has been posted.", Toast.LENGTH_SHORT).show()
-                        uploadImage()
+
+                        uploadImage(it.id.toString())
 
                     }
                     .addOnFailureListener {
@@ -248,8 +251,7 @@ class AdListingActivity : AppCompatActivity() {
 
     }
 
-    private fun uploadImage(){
-        val pb = ProgressDialog(this)
+    private fun uploadImage(toString: String) {
         pb.setMessage("Uploading photos")
         pb.setCancelable(false)
         pb.show()
@@ -262,9 +264,12 @@ class AdListingActivity : AppCompatActivity() {
             val image: Uri = photosUrls[i]
             val imagename = storageRef.child(image.lastPathSegment.toString())
             imagename.putFile(photosUrls[i]).addOnSuccessListener {
-                    val url = image.toString()
-                println("image url  $url")
-                    sendLink(url)
+
+                    imagename.downloadUrl.addOnSuccessListener {
+                        val url = it.toString()
+                        sendLink(url, toString)
+                    }
+
 
             }.addOnFailureListener {
 
@@ -272,21 +277,21 @@ class AdListingActivity : AppCompatActivity() {
             i++
         }
 
-        startActivity(Intent(this, PaymentActivity::class.java))
-
-
     }
 
-    private fun sendLink(url: String) {
-        val hashMap = HashMap<String, String>()
-        hashMap["link"] = url
+    private fun sendLink(url: String, toString: String) {
+        imageUrlList.add(url)
 
         val firestore = FirebaseFirestore.getInstance()
-        val docId = firestore.collection(ShovlConstants.KEY_COLLECTION_POSTS).document().id
 
         firestore.collection(ShovlConstants.KEY_COLLECTION_POSTS)
-            .add(hashMap)
+            .document(toString)
+            .update("images", imageUrlList)
             .addOnSuccessListener {
+                pb.dismiss()
+                startActivity(Intent(this, PaymentActivity::class.java))
+
+            }.addOnFailureListener {
 
             }
 
