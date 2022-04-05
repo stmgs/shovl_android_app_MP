@@ -296,6 +296,7 @@ class AddPostFragment : Fragment() {
                 imagename.downloadUrl.addOnSuccessListener {
                     val url = it.toString()
                     sendLink(url, toString)
+
                 }
 
 
@@ -304,6 +305,8 @@ class AddPostFragment : Fragment() {
             }
             i++
         }
+        startActivity(Intent(requireContext(), PaymentActivity::class.java))
+
 
     }
 
@@ -317,7 +320,6 @@ class AddPostFragment : Fragment() {
             .update("images", imageUrlList)
             .addOnSuccessListener {
                 pb.dismiss()
-                startActivity(Intent(requireContext(), PaymentActivity::class.java))
 
             }.addOnFailureListener {
 

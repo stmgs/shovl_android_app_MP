@@ -1,20 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ViewProfile">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_edit_profile"
+        android:id="@+id/toolbar_profile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/primaryColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="View Profile"
+        app:title="Profile"
         app:titleTextColor="@color/white" />
 
     <Button
@@ -25,16 +47,15 @@
         android:text="Edit Profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_edit_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_profile" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="334dp"
-        android:layout_height="529dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guide_right"
+        app:layout_constraintStart_toStartOf="@id/guide_left"
         app:layout_constraintTop_toBottomOf="@+id/editButton">
 
         <TextView
@@ -80,6 +101,7 @@
             android:textColor="@color/primaryColor"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:layout_marginTop="15dp"
             app:layout_constraintBottom_toTopOf="@+id/ageEditText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -114,6 +136,8 @@
             android:textColor="@color/primaryColor"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:layout_marginTop="15dp"
+
             app:layout_constraintBottom_toTopOf="@+id/genderEditText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -148,6 +172,8 @@
             android:textColor="@color/primaryColor"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:layout_marginTop="15dp"
+
             app:layout_constraintBottom_toTopOf="@+id/addressEditText1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -168,12 +194,13 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/addressEditProvince"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addressEditLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/addressEditLabel"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
+<!--
         <EditText
             android:id="@+id/addressEditProvince"
             android:layout_width="303dp"
@@ -194,6 +221,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addressEditText1" />
+-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
