@@ -60,7 +60,6 @@ class PostsFragment : Fragment() {
                             PostsAdapter(postList, object : PostsAdapter.PostRVClickListener{
 
                                 override fun onVClick(post: Post) {
-                                    println("inside onclick")
                                     val intent = Intent(requireContext(), ActivityDetails::class.java)
                                     intent.putExtra("post_data", post)
                                     startActivity(intent)

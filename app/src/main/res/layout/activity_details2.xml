@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ActivityDetails">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryColor"
+        app:title="Advertisement Details"
+        app:titleTextColor="@color/white" />
+
+    <TextView
+        android:id="@+id/tv_posted_by_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_details"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Posted by : XXXX XXXX"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
 
     <LinearLayout
@@ -12,31 +33,38 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:orientation="horizontal"
-        android:weightSum="8">
+        android:weightSum="8"
+        android:layout_below="@id/tv_posted_by_details">
 
-        <Button
-            android:id="@+id/btn_pre"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@drawable/btn_pre"
-            android:gravity="center" />
 
-        <ImageSwitcher
-            android:id="@+id/img_scroller"
-            android:layout_width="fill_parent"
-            android:layout_height="250dp"
-            android:layout_weight="6" />
 
-        <Button
-            android:id="@+id/btn_next"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@drawable/btn_next"
-            android:gravity="center" />
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="6dp"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true">
+
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/image_slider_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:sliderAnimationDuration="1200"
+                app:sliderAutoCycleDirection="back_and_forth"
+                app:sliderAutoCycleEnabled="true"
+                app:sliderIndicatorAnimationDuration="600"
+                app:sliderIndicatorGravity="center_horizontal|bottom"
+                app:sliderIndicatorMargin="15dp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="3dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="@color/primaryColor"
+                app:sliderIndicatorUnselectedColor="@color/greySoft"
+                app:sliderScrollTimeInSec="3"
+                app:sliderStartAutoCycle="true" />
+
+        </androidx.cardview.widget.CardView>
+
 
     </LinearLayout>
 
@@ -45,31 +73,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lin_1"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="35dp"
-        android:drawableStart="@drawable/location_icon"
-        android:text="Location"
-        android:textSize="35dp" />
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:hint="Location"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:drawableStartCompat="@drawable/location_icon" />
 
 
     <TextView
-        android:id="@+id/et1"
+        android:id="@+id/tv_description_details"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/tv_location"
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="top"
+        android:layout_marginBottom="20dp"
         android:scrollbars="horizontal|vertical"
+        android:textSize="16sp"
         android:verticalScrollbarPosition="defaultPosition" />
 
     <LinearLayout
         android:id="@+id/linlayoutmiddle"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_below="@id/et1"
+        android:layout_below="@id/tv_description_details"
         android:orientation="horizontal"
         android:padding="5dp"
         android:weightSum="2">
@@ -77,16 +107,17 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_weight="1">
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            >
 
             <TextView
                 android:id="@+id/ad_tv_to"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="TO:"
-                android:textColor="@color/primaryColor"/>
+                android:text="From:"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/ad_tv_start"
@@ -100,7 +131,7 @@
 
             <ImageView
                 android:id="@+id/toChoose"
-                android:layout_width="10dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
@@ -112,7 +143,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:layout_weight="1">
 
             <TextView
@@ -146,12 +177,22 @@
 
     </LinearLayout>
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_apply_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/linlayoutmiddle"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text=" Apply "></Button>
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:padding="12dp"
+        android:text="Apply "
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:cornerRadius="8dp" />
 
 </RelativeLayout>
