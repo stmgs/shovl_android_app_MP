@@ -1,7 +1,9 @@
 package com.example.shovl_android.data
 
+import java.io.Serializable
+
 data class Post(
-    val id : String? = null,
+    var id : String? = null,
     val address : String?= null,
     val title : String?= null,
     val description : String?= null,
@@ -10,4 +12,4 @@ data class Post(
     val time_From : String?= null,
     val time_to : String?= null,
     val images : ArrayList<String>?= null
-)
+) : Serializable

@@ -13,7 +13,8 @@
         android:theme="@style/Theme.Shovl_android">
         <activity
             android:name=".HomeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked"/>
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false" />

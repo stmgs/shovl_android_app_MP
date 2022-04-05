@@ -32,7 +32,6 @@ import kotlin.collections.ArrayList
 class AddPostFragment : Fragment() {
 
     private lateinit var binding : FragmentAddPostBinding
-    //lateinit var imageUri : Uri
     var photosUrls = ArrayList<Uri>()
     val imageUrlList = ArrayList<String>()
     private lateinit var pb : ProgressDialog
@@ -247,8 +246,7 @@ class AddPostFragment : Fragment() {
                     .add(posts)
                     .addOnSuccessListener {
                         Toast.makeText(requireContext(), "Ad has been posted.", Toast.LENGTH_SHORT).show()
-
-                        uploadImage(it.id.toString())
+                        uploadImage(it.id)
 
                     }
                     .addOnFailureListener {
@@ -288,7 +286,6 @@ class AddPostFragment : Fragment() {
 
         var i = 0
         while (i < photosUrls.size) {
-            println("inside while loop")
             val image: Uri = photosUrls[i]
             val imagename = storageRef.child(image.lastPathSegment.toString())
             imagename.putFile(photosUrls[i]).addOnSuccessListener {
@@ -296,9 +293,7 @@ class AddPostFragment : Fragment() {
                 imagename.downloadUrl.addOnSuccessListener {
                     val url = it.toString()
                     sendLink(url, toString)
-
                 }
-
 
             }.addOnFailureListener {
 

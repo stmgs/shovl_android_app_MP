@@ -1,5 +1,6 @@
 package com.example.shovl_android.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.shovl_android.ActivityDetails
 import com.example.shovl_android.R
 import com.example.shovl_android.adapters.PostsAdapter
 import com.example.shovl_android.data.Post
@@ -43,8 +45,10 @@ class PostsFragment : Fragment() {
 
                     postList.clear()
                     for (postDocumentFromFirestore in it){
+
                         val postModel =postDocumentFromFirestore.toObject(Post::class.java)
-                        println("post model from girestore $postModel")
+                        postModel.id = postDocumentFromFirestore.id
+                        println("post model from firestore $postModel")
                         postList.add(postModel)
 
                     }
@@ -53,7 +57,17 @@ class PostsFragment : Fragment() {
                         it.layoutManager= StaggeredGridLayoutManager(2,LinearLayoutManager.VERTICAL)
                         it.setHasFixedSize(true)
                         it.adapter =
-                            PostsAdapter(postList)
+                            PostsAdapter(postList, object : PostsAdapter.PostRVClickListener{
+
+                                override fun onVClick(post: Post) {
+                                    println("inside onclick")
+                                    val intent = Intent(requireContext(), ActivityDetails::class.java)
+                                    intent.putExtra("post_data", post)
+                                    startActivity(intent)
+
+                                }
+
+                            })
                     }
 
 
