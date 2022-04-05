@@ -42,7 +42,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ActivityDetails"
-            android:exported="false" />
+            android:exported="false" />-->
         <activity
             android:name=".RegisterActivity"
             android:exported="false"
@@ -62,9 +62,9 @@
             <!-- android:theme="@style/SplashTheme"> -->
 
         </activity>
-        <activity
+    <!--  <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true" />-->
     </application>
 
 </manifest>

@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.shovl_android.databinding.ActivityHomeBinding
+import com.example.shovl_android.fragments.AddPostFragment
+import com.example.shovl_android.fragments.ConfirmFragment
+import com.example.shovl_android.fragments.PostsFragment
+import com.example.shovl_android.fragments.ProfileFragment
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding : ActivityHomeBinding
