@@ -17,10 +17,7 @@ import android.widget.TimePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.shovl_android.PaymentActivity
-import com.example.shovl_android.R
 import com.example.shovl_android.adapters.ImagesRvAdapterAdList
-import com.example.shovl_android.databinding.ActivityAdListingBinding
 import com.example.shovl_android.databinding.FragmentAddPostBinding
 import com.example.shovl_android.utilities.ShovlConstants
 import com.google.firebase.firestore.FirebaseFirestore
@@ -300,7 +297,8 @@ class AddPostFragment : Fragment() {
             }
             i++
         }
-        startActivity(Intent(requireContext(), PaymentActivity::class.java))
+        clearAllFields()
+        //startActivity(Intent(requireContext(), PaymentActivity::class.java))
 
 
     }

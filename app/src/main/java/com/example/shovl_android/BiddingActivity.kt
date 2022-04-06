@@ -17,22 +17,14 @@ class BiddingActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityBiddingBinding
 
-    var imageList = intArrayOf(
-        R.drawable.snow_image_1,
-        R.drawable.snow_image_2,
-        R.drawable.snow_image_3,
-        R.drawable.snow_image_4
-    ) // DEMO IMAGES
-
-    var count = imageList.size
-    var currentIndex = 0
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityBiddingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val post = intent.extras?.get("post_data_from_details") as Post
+
+
 
         binding.proceed.setOnClickListener {
             val price = binding.price.text.toString()
@@ -53,9 +45,9 @@ class BiddingActivity : AppCompatActivity() {
                 db.collection(ShovlConstants.KEY_COLLECTION_BIDDING)
                     .add(bidding)
                     .addOnSuccessListener {
-                        Log.d("success", "data stored")
+                        Toast.makeText(this, "Bid has been posted.", Toast.LENGTH_SHORT).show()
 
-                        val intent = Intent(this, MainActivity::class.java)
+                        val intent = Intent(this, HomeActivity::class.java)
                         intent.flags =
                             Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
@@ -69,7 +61,12 @@ class BiddingActivity : AppCompatActivity() {
         }
 
         val cancel = findViewById(R.id.cancel) as Button
-        cancel.setOnClickListener { startActivity(Intent(this, MainActivity::class.java)) }
+        cancel.setOnClickListener {
+            finish()
+           // startActivity(Intent(this, HomeActivity::class.java))
+
+        }
+
     }
     private fun loading(isLoading : Boolean){
         if (isLoading){

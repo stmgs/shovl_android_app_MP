@@ -4,9 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".BiddingActivity"
-    android:paddingBottom="30dp">
+    android:paddingBottom="30dp"
+    >
 
 <!--
     <LinearLayout
@@ -45,6 +46,16 @@
     </LinearLayout>
 -->
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_bidding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/primaryColor"
+        app:title="Bid your price"
+        app:titleTextColor="@color/white"
+        />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -53,7 +64,7 @@
         android:text="Bid your price:"
         android:textColor="@color/black"
         android:textSize="25sp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_bidding"
         app:layout_constraintStart_toStartOf="parent"
         />
 
@@ -66,7 +77,6 @@
         android:hint="$X/hr"
         android:padding="10dp"
         android:layout_margin="20dp"
-        android:textColorHint="#BDB8B8"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,11 +105,24 @@
         android:hint="Y hrs"
         android:padding="10dp"
         android:layout_margin="20dp"
-        android:textColorHint="#BDB8B8"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/tv_total_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/time"
+        android:text="$0"
+        android:layout_margin="20dp"
+        android:visibility="invisible"
+        />
 
     <Button
         android:id="@+id/proceed"
@@ -111,9 +134,11 @@
         android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/time"
+        app:layout_constraintTop_toBottomOf="@+id/tv_total_details"
         android:textAllCaps="false"
         android:padding="10dp"
+        android:textStyle="bold"
+        android:textSize="18sp"
          />
 
     <Button
@@ -130,6 +155,8 @@
         android:backgroundTint="@color/red"
         android:textAllCaps="false"
         android:padding="10dp"
+        android:textStyle="bold"
+        android:textSize="18sp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

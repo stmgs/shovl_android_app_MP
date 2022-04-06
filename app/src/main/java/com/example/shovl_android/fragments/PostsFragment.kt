@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.shovl_android.ActivityDetails
-import com.example.shovl_android.R
 import com.example.shovl_android.adapters.PostsAdapter
 import com.example.shovl_android.data.Post
 import com.example.shovl_android.databinding.FragmentPostsBinding

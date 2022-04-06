@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar_ad_listing"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:title="List your ad"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/nes"
+    android:background="@color/primaryColor"
+    app:titleTextColor="@color/white"/>
+
+<androidx.core.widget.NestedScrollView
+    android:id="@+id/nes"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintTop_toBottomOf="@id/toolbar_ad_listing">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="20dp">
+        android:layout_height="0dp"
+        android:paddingBottom="60dp">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_left"
@@ -32,14 +49,7 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_ad_listing"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:title="List your ad"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/primaryColor"
-            app:titleTextColor="@color/white"/>
+
 
         <TextView
             android:id="@+id/tv_address_ad_listing"
@@ -51,7 +61,8 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/guide_left"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_ad_listing" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <EditText
             android:id="@+id/et_address_ad_listing"
@@ -64,6 +75,7 @@
             android:padding="6dp"
             android:textColor="@color/primaryColor"
             android:textSize="20sp"
+            android:inputType="textCapWords"
             app:layout_constraintEnd_toEndOf="@id/guide_right"
             app:layout_constraintStart_toStartOf="@id/guide_left"
             app:layout_constraintTop_toBottomOf="@id/tv_address_ad_listing" />
@@ -90,6 +102,7 @@
             android:padding="6dp"
             android:textColor="@color/primaryColor"
             android:textSize="20sp"
+            android:inputType="textCapSentences"
             app:layout_constraintEnd_toEndOf="@id/guide_right"
             app:layout_constraintStart_toStartOf="@id/guide_left"
             app:layout_constraintTop_toBottomOf="@id/tv_title_ad_listing" />
@@ -109,7 +122,7 @@
         <EditText
             android:id="@+id/et_description_ad_listing"
             android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_height="75dp"
             android:layout_marginTop="6dp"
             android:background="@drawable/grey_tint_background"
             android:gravity="top"
@@ -126,7 +139,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="From"
+            android:text="Date From"
             android:textColor="@color/primaryColor"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -156,7 +169,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="To"
+            android:text="Date To"
             android:textColor="@color/primaryColor"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -214,7 +227,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="To"
+            android:text="Time To"
             android:textColor="@color/primaryColor"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -283,41 +296,11 @@
                         />
 
                     <ImageView
-                        android:id="@+id/iv_1_add_listing"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:background="@color/greySoft"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:visibility="gone"/>
-
-                    <ImageView
-                        android:id="@+id/iv_2_add_listing"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginLeft="10dp"
-                        android:background="@color/greySoft"
-                        app:layout_constraintStart_toEndOf="@id/iv_1_add_listing"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:visibility="gone"
-                        />
-
-                    <ImageView
-                        android:id="@+id/iv_3_add_listing"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginLeft="10dp"
-                        android:background="@color/greySoft"
-                        app:layout_constraintStart_toEndOf="@id/iv_2_add_listing"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:visibility="gone"
-                        />
-
-                    <ImageView
                         android:id="@+id/iv_add_image_ad_list"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
                         android:src="@drawable/ic_baseline_add_circle_24"
                         app:layout_constraintStart_toEndOf="@id/rv_add_image_post"
                         app:layout_constraintTop_toTopOf="parent"
@@ -365,4 +348,6 @@
 
 
 </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -95,7 +95,7 @@ class RegisterActivity : AppCompatActivity() {
                                     preferenceMangager.putInt(ShovlConstants.KEY_AGE, age)
                                     preferenceMangager.putString(ShovlConstants.KEY_PHONE, phone)
 
-                                    val intent = Intent(this, AdListingActivity::class.java)
+                                    val intent = Intent(this, HomeActivity::class.java)
                                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                     startActivity(intent)
                                 }

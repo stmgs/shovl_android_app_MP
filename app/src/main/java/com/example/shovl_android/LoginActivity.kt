@@ -79,10 +79,13 @@ class LoginActivity : AppCompatActivity() {
                                         ShovlConstants.KEY_NAME,
                                         snapShot.getString(ShovlConstants.KEY_NAME).toString()
                                     )
-                                    preferenceMangager.putString(
-                                        ShovlConstants.KEY_AGE,
-                                        snapShot.getString(ShovlConstants.KEY_NAME).toString()
-                                    )
+
+                                    snapShot.getLong(ShovlConstants.KEY_AGE)?.let { it1 ->
+                                        preferenceMangager.putInt(
+                                            ShovlConstants.KEY_AGE,
+                                            it1.toInt()
+                                        )
+                                    }
 
                                     preferenceMangager.putString(
                                         ShovlConstants.KEY_ADDRESS,
@@ -97,7 +100,7 @@ class LoginActivity : AppCompatActivity() {
                                         snapShot.getString(ShovlConstants.KEY_PHONE).toString()
                                     )
 
-                                    val intent = Intent(this, AdListingActivity::class.java)
+                                    val intent = Intent(this, HomeActivity::class.java)
                                     intent.flags =
                                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                     startActivity(intent)
@@ -106,7 +109,7 @@ class LoginActivity : AppCompatActivity() {
                                     loading(false)
                                     Toast.makeText(
                                         this,
-                                        "Email or password is incorrect!",
+                                        "Incorrect password for given email.",
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
@@ -121,7 +124,8 @@ class LoginActivity : AppCompatActivity() {
                                 ).show()
                             }
                     } else{
-
+                        loading(false)
+                        Toast.makeText(this, "Incorrect password for given email.", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
