@@ -1,14 +1,353 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AddPostFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar_ad_listing"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:title="List your ad"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/nes"
+    android:background="@color/primaryColor"
+    app:titleTextColor="@color/white"/>
+
+<androidx.core.widget.NestedScrollView
+    android:id="@+id/nes"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintTop_toBottomOf="@id/toolbar_ad_listing">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="0dp"
+        android:paddingBottom="60dp">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+
+
+        <TextView
+            android:id="@+id/tv_address_ad_listing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Address"
+            android:textColor="@color/primaryColor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <EditText
+            android:id="@+id/et_address_ad_listing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/grey_tint_background"
+            android:drawableStart="@drawable/location_icon"
+            android:hint="Enter address"
+            android:padding="6dp"
+            android:textColor="@color/primaryColor"
+            android:textSize="20sp"
+            android:inputType="textCapWords"
+            app:layout_constraintEnd_toEndOf="@id/guide_right"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_address_ad_listing" />
+
+        <TextView
+            android:id="@+id/tv_title_ad_listing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Post Title"
+            android:textColor="@color/primaryColor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintTop_toBottomOf="@id/et_address_ad_listing" />
+
+        <EditText
+            android:id="@+id/et_post_title_ad_listing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/grey_tint_background"
+            android:hint="Post title"
+            android:padding="6dp"
+            android:textColor="@color/primaryColor"
+            android:textSize="20sp"
+            android:inputType="textCapSentences"
+            app:layout_constraintEnd_toEndOf="@id/guide_right"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_ad_listing" />
+
+        <TextView
+            android:id="@+id/tv_description_ad_listing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Description"
+            android:textColor="@color/primaryColor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintTop_toBottomOf="@id/et_post_title_ad_listing" />
+
+        <EditText
+            android:id="@+id/et_description_ad_listing"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/grey_tint_background"
+            android:gravity="top"
+            android:hint="Enter your short and sweet description."
+            android:padding="6dp"
+            android:textColor="@color/primaryColor"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/guide_right"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_description_ad_listing" />
+
+        <TextView
+            android:id="@+id/tv_date_from_ad_listing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Date From"
+            android:textColor="@color/primaryColor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintTop_toBottomOf="@id/et_description_ad_listing"
+            app:layout_constraintVertical_bias="1.0"
+
+            />
+
+        <TextView
+            android:id="@+id/et_date_from_ad_listing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:background="@drawable/grey_tint_background"
+            android:drawableRight="@drawable/calender_icon"
+            android:padding="4dp"
+            android:hint="12/12/2022"
+            android:textColor="@color/primaryColor"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/guide_center"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_date_from_ad_listing" />
+
+        <TextView
+            android:id="@+id/tv_date_to_ad_listing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Date To"
+            android:textColor="@color/primaryColor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/et_date_to_ad_listing"
+            app:layout_constraintStart_toEndOf="@id/guide_center"
+            app:layout_constraintTop_toBottomOf="@id/et_description_ad_listing" />
+
+        <TextView
+            android:id="@+id/et_date_to_ad_listing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:background="@drawable/grey_tint_background"
+            android:drawableRight="@drawable/calender_icon"
+            android:padding="4dp"
+            android:hint="12/20/2022"
+            android:textColor="@color/primaryColor"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/guide_right"
+            app:layout_constraintStart_toEndOf="@+id/guide_center"
+            app:layout_constraintTop_toBottomOf="@id/tv_date_to_ad_listing" />
+
+        <TextView
+            android:id="@+id/tv_time_from_ad_listing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Time from"
+            android:textColor="@color/primaryColor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintTop_toBottomOf="@id/et_date_to_ad_listing"
+
+            />
+
+        <TextView
+            android:id="@+id/et_time_from_ad_listing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/grey_tint_background"
+            android:drawableRight="@drawable/clock_icon"
+            android:hint="hh:mm"
+            android:padding="4dp"
+            android:textColor="@color/primaryColor"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/guide_center"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_time_from_ad_listing" />
+
+        <TextView
+            android:id="@+id/tv_time_to_ad_listing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Time To"
+            android:textColor="@color/primaryColor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/guide_center"
+            app:layout_constraintTop_toBottomOf="@id/et_date_to_ad_listing" />
+
+        <TextView
+            android:id="@+id/et_time_to_ad_listing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:background="@drawable/grey_tint_background"
+            android:drawableRight="@drawable/clock_icon"
+            android:hint="hh:mm"
+            android:padding="4dp"
+            android:textColor="@color/primaryColor"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/guide_right"
+            app:layout_constraintStart_toEndOf="@+id/guide_center"
+            app:layout_constraintTop_toBottomOf="@id/tv_time_to_ad_listing" />
+
+        <TextView
+            android:id="@+id/tv_add_pictures_ad_listing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Add Pictures"
+            android:textColor="@color/primaryColor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintTop_toBottomOf="@id/et_time_from_ad_listing" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/images_layout_ad_listing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@id/guide_right"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_add_pictures_ad_listing">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_add_image_post"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/iv_add_image_ad_list"
+                        android:layout_margin="5dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+                    <ImageView
+                        android:id="@+id/iv_add_image_ad_list"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_baseline_add_circle_24"
+                        app:layout_constraintStart_toEndOf="@id/rv_add_image_post"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </HorizontalScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_done_ad_listing"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_margin="20dp"
+            app:cornerRadius="8dp"
+            android:text="Done"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/images_layout_ad_listing"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintEnd_toEndOf="@id/guide_right"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_cancel_ad_listing"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_margin="20dp"
+            app:cornerRadius="8dp"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/quantum_googred500"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/btn_done_ad_listing"
+            app:layout_constraintStart_toStartOf="@id/guide_left"
+            app:layout_constraintEnd_toEndOf="@id/guide_right"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

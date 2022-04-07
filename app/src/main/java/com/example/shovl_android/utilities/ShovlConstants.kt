@@ -6,7 +6,6 @@ class ShovlConstants {
         const val KEY_COLLECTION_USERS="users"
         const val KEY_COLLECTION_BIDDING="bidding"
         const val KEY_EMAIL="email"
-        const val KEY_PASSWORD="password"
         const val KEY_NAME="name"
         const val KEY_AGE="age"
         const val KEY_ADDRESS="location"

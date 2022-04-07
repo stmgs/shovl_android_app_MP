@@ -13,19 +13,21 @@
         android:theme="@style/Theme.Shovl_android">
         <activity
             android:name=".HomeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".ForgotPasswordActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".BiddingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".EditProfile"
-            android:exported="false" />
-        <activity
-            android:name=".ViewProfile"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".PaymentActivity"
             android:exported="true"
@@ -33,16 +35,10 @@
         <activity
             android:name=".ConfirmShovelerActivity"
             android:exported="false" />
-        <activity
-            android:name=".ProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AdListingActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize" />
+
         <activity
             android:name=".ActivityDetails"
-            android:exported="false" />-->
+            android:exported="false" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false"
@@ -62,9 +58,7 @@
             <!-- android:theme="@style/SplashTheme"> -->
 
         </activity>
-    <!--  <activity
-            android:name=".MainActivity"
-            android:exported="true" />-->
+
     </application>
 
 </manifest>

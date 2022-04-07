@@ -1,14 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".ViewProfile">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_profile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Profile"
+        app:titleTextColor="@color/white" />
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="157dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="12dp"
+        android:text="Edit Profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_profile" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guide_right"
+        app:layout_constraintStart_toStartOf="@id/guide_left"
+        app:layout_constraintTop_toBottomOf="@+id/editButton">
+
+        <TextView
+            android:id="@+id/nameEditLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:textColor="@color/primaryColor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/nameEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread" />
+
+        <TextView
+            android:id="@+id/nameEditText"
+            android:layout_width="303dp"
+            android:layout_height="48dp"
+            android:background="@drawable/grey_tint_background"
+            android:editable="false"
+            android:ems="10"
+            android:gravity="top"
+            android:inputType="textPersonName"
+            android:padding="6dp"
+            android:text="John Markson"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/ageEditLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameEditLabel" />
+
+        <TextView
+            android:id="@+id/ageEditLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age"
+            android:textColor="@color/primaryColor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/ageEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
+
+        <TextView
+            android:id="@+id/ageEditText"
+            android:layout_width="303dp"
+            android:layout_height="48dp"
+            android:background="@drawable/grey_tint_background"
+            android:editable="false"
+            android:ems="10"
+            android:gravity="top"
+            android:inputType="textPersonName"
+            android:padding="6dp"
+            android:text="18"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/genderEditLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ageEditLabel" />
+
+        <TextView
+            android:id="@+id/genderEditLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender:"
+            android:textColor="@color/primaryColor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+
+            app:layout_constraintBottom_toTopOf="@+id/genderEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ageEditText" />
+
+        <TextView
+            android:id="@+id/genderEditText"
+            android:layout_width="303dp"
+            android:layout_height="48dp"
+            android:background="@drawable/grey_tint_background"
+            android:editable="false"
+            android:ems="10"
+            android:gravity="top"
+            android:inputType="textPersonName"
+            android:padding="6dp"
+            android:text="Male"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/addressEditLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/genderEditLabel" />
+
+        <TextView
+            android:id="@+id/addressEditLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address:"
+            android:textColor="@color/primaryColor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+
+            app:layout_constraintBottom_toTopOf="@+id/addressEditText1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/genderEditText" />
+
+        <TextView
+            android:id="@+id/addressEditText1"
+            android:layout_width="303dp"
+            android:layout_height="48dp"
+            android:background="@drawable/grey_tint_background"
+            android:ems="10"
+            android:gravity="top"
+            android:padding="6dp"
+            android:text="22, Georgian Drive"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addressEditLabel"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <!--
+                <EditText
+                    android:id="@+id/addressEditProvince"
+                    android:layout_width="303dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/grey_tint_background"
+                    android:editable="false"
+                    android:ems="10"
+                    android:gravity="top"
+                    android:inputType="textPersonName"
+                    android:padding="6dp"
+                    android:text="Barrie, Ontario"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addressEditText1" />
+        -->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

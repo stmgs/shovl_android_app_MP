@@ -14,7 +14,7 @@ class PaymentActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnPay.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
     }
