@@ -78,6 +78,8 @@ dependencies {
 
     implementation 'com.github.smarteist:autoimageslider:1.4.0'
 
+    implementation 'com.github.GrenderG:Toasty:1.5.2'
+
 
 
 }

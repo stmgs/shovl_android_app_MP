@@ -47,7 +47,6 @@ class PostsFragment : Fragment() {
 
                         val postModel =postDocumentFromFirestore.toObject(Post::class.java)
                         postModel.id = postDocumentFromFirestore.id
-                        println("post model from firestore $postModel")
                         postList.add(postModel)
 
                     }

@@ -24,7 +24,6 @@ class ActivityDetails : AppCompatActivity() {
         setContentView(binding.root)
 
         val post = intent.extras?.get("post_data") as Post
-        println("post inside details activity $post")
         val imageList = post.images
 
         binding.tvDescriptionDetails.text=post.description
