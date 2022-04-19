@@ -7,15 +7,18 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shovl_android.data.Post
+import com.example.shovl_android.data.Users
 import com.example.shovl_android.databinding.ActivityBiddingBinding
 import com.example.shovl_android.databinding.ActivityRegisterBinding
 import com.example.shovl_android.utilities.PreferenceMangager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.example.shovl_android.utilities.ShovlConstants
+import com.google.firebase.firestore.FieldValue
 
 class BiddingActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityBiddingBinding
+    private lateinit var preferenceMangager: PreferenceMangager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +26,8 @@ class BiddingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val post = intent.extras?.get("post_data_from_details") as Post
-
+        val postedBy = intent.extras?.get("posted_by_details") as Users
+        preferenceMangager= PreferenceMangager(this)
 
 
         binding.proceed.setOnClickListener {
@@ -40,6 +44,16 @@ class BiddingActivity : AppCompatActivity() {
                     ShovlConstants.KEY_BID_PRICE to price,
                     ShovlConstants.KEY_REQ_TIME to time
                 )
+
+                db.collection(ShovlConstants.KEY_COLLECTION_POSTS)
+                    .document(post.id.toString())
+                    .update(ShovlConstants.KEY_BIDDERS,FieldValue
+                        .arrayUnion(preferenceMangager.getString(ShovlConstants.KEY_USER_ID)))
+                    .addOnSuccessListener {
+
+                    }.addOnFailureListener {
+
+                    }
 
                 //add data to firebase
                 db.collection(ShovlConstants.KEY_COLLECTION_BIDDING)

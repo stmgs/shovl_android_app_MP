@@ -60,7 +60,7 @@
                 app:sliderIndicatorRadius="2dp"
                 app:sliderIndicatorSelectedColor="@color/primaryColor"
                 app:sliderIndicatorUnselectedColor="@color/greySoft"
-                app:sliderScrollTimeInSec="3"
+                app:sliderScrollTimeInSec="2"
                 app:sliderStartAutoCycle="true" />
 
         </androidx.cardview.widget.CardView>
@@ -98,16 +98,16 @@
     <LinearLayout
         android:id="@+id/linlayoutmiddle"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/tv_description_details"
         android:orientation="horizontal"
         android:padding="5dp"
+        android:layout_margin="5dp"
         android:weightSum="2">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
             android:layout_weight="1"
             >
 
@@ -177,18 +177,96 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linlayouttime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linlayoutmiddle"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/tv_pl_1_details"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="From:"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_time_from_details"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:hint="hh:mm"
+                android:textColor="@color/primaryColor"
+                android:textStyle="bold"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF"
+                app:srcCompat="@drawable/clock_icon" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_pl_2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="End:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_time_to_details"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="hh:mm"
+                android:textColor="@color/primaryColor"
+                android:textStyle="bold"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF"
+                app:srcCompat="@drawable/clock_icon" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_apply_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linlayoutmiddle"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/linlayouttime"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        android:padding="12dp"
+        android:padding="8dp"
         android:text="Apply "
         android:textAllCaps="false"
         android:textSize="20sp"

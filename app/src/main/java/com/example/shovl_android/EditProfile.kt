@@ -70,8 +70,6 @@ class EditProfile : AppCompatActivity() {
                 .addOnFailureListener {
                     Log.d("fire error", it.message.toString())
                     Toast.makeText(this, it.message.toString(), Toast.LENGTH_LONG).show()
-
-
                 }
         }
 

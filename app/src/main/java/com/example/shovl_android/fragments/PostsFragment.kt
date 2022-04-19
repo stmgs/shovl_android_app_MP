@@ -13,12 +13,14 @@ import com.example.shovl_android.ActivityDetails
 import com.example.shovl_android.adapters.PostsAdapter
 import com.example.shovl_android.data.Post
 import com.example.shovl_android.databinding.FragmentPostsBinding
+import com.example.shovl_android.utilities.PreferenceMangager
 import com.example.shovl_android.utilities.ShovlConstants
 import com.google.firebase.firestore.FirebaseFirestore
 
 class PostsFragment : Fragment() {
     private lateinit var binding : FragmentPostsBinding
     var postList = ArrayList<Post>()
+    private lateinit var preferenceMangager: PreferenceMangager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,9 +33,12 @@ class PostsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        preferenceMangager = PreferenceMangager(requireContext())
+
 
         val db= FirebaseFirestore.getInstance()
         db.collection(ShovlConstants.KEY_COLLECTION_POSTS)
+            //.whereNotEqualTo(ShovlConstants.POSTED_BY,preferenceMangager.getString(ShovlConstants.KEY_USER_ID))
             .get()
             .addOnSuccessListener {
                 if (it.isEmpty){
@@ -44,7 +49,6 @@ class PostsFragment : Fragment() {
 
                     postList.clear()
                     for (postDocumentFromFirestore in it){
-
                         val postModel =postDocumentFromFirestore.toObject(Post::class.java)
                         postModel.id = postDocumentFromFirestore.id
                         postList.add(postModel)

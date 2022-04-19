@@ -4,6 +4,7 @@ import java.io.Serializable
 
 data class Post(
     var id : String? = null,
+    var posted_by : String? = null,
     val address : String?= null,
     val title : String?= null,
     val description : String?= null,

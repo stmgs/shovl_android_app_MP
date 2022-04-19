@@ -45,7 +45,6 @@ class ProfileFragment : Fragment() {
                     true
                 }
                 R.id.logout_menu_item -> {
-
                     MaterialAlertDialogBuilder(requireContext())
                         .setTitle("Are you sure you want to logout?")
                         .setPositiveButton("Yes", object : DialogInterface.OnClickListener{
@@ -58,18 +57,12 @@ class ProfileFragment : Fragment() {
                                 Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(intent)
                         }
-
                     })
                     .setNegativeButton("No", object : DialogInterface.OnClickListener{
                         override fun onClick(p0: DialogInterface?, p1: Int) {
-
                         }
-
                     }).show()
-
                     //dialog.show()
-
-
                     true
                 }
                 else -> false

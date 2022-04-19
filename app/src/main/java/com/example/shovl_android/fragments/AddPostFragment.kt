@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shovl_android.adapters.ImagesRvAdapterAdList
 import com.example.shovl_android.databinding.FragmentAddPostBinding
+import com.example.shovl_android.utilities.PreferenceMangager
 import com.example.shovl_android.utilities.ShovlConstants
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -32,6 +33,7 @@ class AddPostFragment : Fragment() {
     var photosUrls = ArrayList<Uri>()
     val imageUrlList = ArrayList<String>()
     private lateinit var pb : ProgressDialog
+    private lateinit var preferenceMangager: PreferenceMangager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +48,7 @@ class AddPostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         pb = ProgressDialog(requireContext())
+        preferenceMangager = PreferenceMangager(requireContext())
 
         //Places.initialize(applicationContext, "")
 
@@ -235,6 +238,7 @@ class AddPostFragment : Fragment() {
                     ShovlConstants.KEY_DATE_TO to dateTo,
                     ShovlConstants.KEY_TIME_FROM to timeFrom,
                     ShovlConstants.KEY_TIME_TO to timeTo,
+                    ShovlConstants.POSTED_BY to preferenceMangager.getString(ShovlConstants.KEY_USER_ID)
                 )
 
 
@@ -251,8 +255,6 @@ class AddPostFragment : Fragment() {
                                 "Sorry, for the inconvinience", Toast.LENGTH_SHORT).show()
                     }
             }
-
-
 
         }
 
@@ -298,8 +300,6 @@ class AddPostFragment : Fragment() {
             i++
         }
         clearAllFields()
-        //startActivity(Intent(requireContext(), PaymentActivity::class.java))
-
 
     }
 
