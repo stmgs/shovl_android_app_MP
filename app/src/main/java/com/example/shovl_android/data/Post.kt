@@ -12,5 +12,6 @@ data class Post(
     val date_to : String?= null,
     val time_From : String?= null,
     val time_to : String?= null,
-    val images : ArrayList<String>?= null
+    val images : ArrayList<String>?= null,
+    val bidders : ArrayList<Bidders>? = null
 ) : Serializable

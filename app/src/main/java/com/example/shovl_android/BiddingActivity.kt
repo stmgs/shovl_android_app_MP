@@ -45,18 +45,33 @@ class BiddingActivity : AppCompatActivity() {
                     ShovlConstants.KEY_REQ_TIME to time
                 )
 
+                val bidderMap= hashMapOf<String, Any>(
+                    "user_id" to preferenceMangager.getString(ShovlConstants.KEY_USER_ID),
+                    "name" to preferenceMangager.getString(ShovlConstants.KEY_NAME),
+                    "price" to price.toInt(),
+                    "time" to time.toInt()
+                )
+
+
                 db.collection(ShovlConstants.KEY_COLLECTION_POSTS)
                     .document(post.id.toString())
                     .update(ShovlConstants.KEY_BIDDERS,FieldValue
-                        .arrayUnion(preferenceMangager.getString(ShovlConstants.KEY_USER_ID)))
+                        .arrayUnion(bidderMap))
                     .addOnSuccessListener {
+                        Toast.makeText(this, "Bid has been posted.", Toast.LENGTH_SHORT).show()
+
+                        val intent = Intent(this, HomeActivity::class.java)
+                        intent.flags =
+                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
 
                     }.addOnFailureListener {
-
+                        loading(false)
+                        Toast.makeText(this, it.message.toString(), Toast.LENGTH_LONG).show()
                     }
 
                 //add data to firebase
-                db.collection(ShovlConstants.KEY_COLLECTION_BIDDING)
+                /*db.collection(ShovlConstants.KEY_COLLECTION_BIDDING)
                     .add(bidding)
                     .addOnSuccessListener {
                         Toast.makeText(this, "Bid has been posted.", Toast.LENGTH_SHORT).show()
@@ -70,7 +85,7 @@ class BiddingActivity : AppCompatActivity() {
                         Log.d("fire error", it.message.toString())
                         loading(false)
                         Toast.makeText(this, it.message.toString(), Toast.LENGTH_LONG).show()
-                    }
+                    }*/
             }
         }
 

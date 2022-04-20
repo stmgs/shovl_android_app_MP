@@ -12,8 +12,7 @@ import com.example.shovl_android.data.Post
 
 class PostsAdapter(private val postList: ArrayList<Post>,
                    viewClickListener: PostRVClickListener
-) :
-    RecyclerView.Adapter<PostViewHolder>() {
+) : RecyclerView.Adapter<PostViewHolder>() {
 
     private val listener: PostRVClickListener? = viewClickListener
 
