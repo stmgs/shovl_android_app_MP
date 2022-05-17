@@ -197,6 +197,7 @@
                 app:layout_constraintRight_toLeftOf="@id/iv_google_login"
                 app:srcCompat="@drawable/facebook"
                 app:layout_constraintHorizontal_weight="1"
+                android:visibility="gone"
                 android:layout_marginStart="120dp"
                  />
 
@@ -208,6 +209,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:srcCompat="@drawable/google"
                 app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"
                 android:layout_marginEnd="120dp"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
