@@ -74,6 +74,7 @@ class ConfirmFragment : Fragment() {
 
                                     override fun onDeleteClicked(bidder: Bidders) {
                                         it1.remove(bidder)
+                                        binding.rvConfirmShoveler.adapter?.notifyDataSetChanged()
 
                                     }
 
