@@ -13,8 +13,9 @@ class ShovlConstants {
         const val KEY_GENDER="gender"
         const val KEY_IS_SIGNED_IN="isSignedIn"
         const val KEY_USER_ID="userId"
+        const val KEY_FCM_TOKEN="fcm_token"
         const val KEY_PERFERENCE_NAME="shovlPreference"
-        const val KEY_IMAGE="dp"
+        const val KEY_DP_IMAGE="dp"
 
 
         const val KEY_COLLECTION_POSTS="posts"

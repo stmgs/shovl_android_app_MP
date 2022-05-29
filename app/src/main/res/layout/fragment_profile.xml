@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewProfile">
+    >
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_left"
@@ -58,19 +58,34 @@
         app:layout_constraintStart_toStartOf="@id/guide_left"
         app:layout_constraintTop_toBottomOf="@+id/editButton">
 
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/iv_pp_profile"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:riv_oval="true"
+            android:background="@drawable/background_pp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/nameEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread"
+            />
+
         <TextView
             android:id="@+id/nameEditLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name:"
             android:textColor="@color/primaryColor"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/nameEditText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_pp_profile"
             app:layout_constraintVertical_chainStyle="spread" />
 
         <TextView
@@ -99,7 +114,7 @@
             android:layout_height="wrap_content"
             android:text="Age"
             android:textColor="@color/primaryColor"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginTop="15dp"
             app:layout_constraintBottom_toTopOf="@+id/ageEditText"
@@ -134,7 +149,7 @@
             android:layout_height="wrap_content"
             android:text="Gender:"
             android:textColor="@color/primaryColor"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginTop="15dp"
 
@@ -170,7 +185,7 @@
             android:layout_height="wrap_content"
             android:text="Address:"
             android:textColor="@color/primaryColor"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginTop="15dp"
 

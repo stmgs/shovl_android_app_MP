@@ -2,7 +2,9 @@ package com.example.shovl_android.fragments
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Base64
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +19,7 @@ import com.example.shovl_android.databinding.FragmentProfileBinding
 import com.example.shovl_android.utilities.PreferenceMangager
 import com.example.shovl_android.utilities.ShovlConstants
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import java.util.*
 
 class ProfileFragment : Fragment() {
 
@@ -74,17 +77,16 @@ class ProfileFragment : Fragment() {
         binding.nameEditText.text = preferenceMangager.getString(ShovlConstants.KEY_NAME)
         binding.genderEditText.text = preferenceMangager.getString(ShovlConstants.KEY_GENDER)
         binding.ageEditText.text = preferenceMangager.getInt(ShovlConstants.KEY_AGE).toString()
+        val bytes = Base64.decode(preferenceMangager.getString(ShovlConstants.KEY_DP_IMAGE), Base64.DEFAULT)
+        val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+        binding.ivPpProfile.setImageBitmap(bitmap)
 
         binding.editButton.setOnClickListener {
                 val intent = Intent(requireContext(), EditProfile::class.java)
                 // start your next activity
                 startActivity(intent)
 
-
         }
-
-
-
     }
 
 }
