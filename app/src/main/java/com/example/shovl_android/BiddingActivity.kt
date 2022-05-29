@@ -40,10 +40,6 @@ class BiddingActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please Enter Valid Time", Toast.LENGTH_SHORT).show()
             }else {
                 val db = FirebaseFirestore.getInstance()
-                val bidding = hashMapOf<String, Any>(
-                    ShovlConstants.KEY_BID_PRICE to price,
-                    ShovlConstants.KEY_REQ_TIME to time
-                )
 
                 val bidderMap= hashMapOf<String, Any>(
                     "user_id" to preferenceMangager.getString(ShovlConstants.KEY_USER_ID),
@@ -51,7 +47,6 @@ class BiddingActivity : AppCompatActivity() {
                     "price" to price.toInt(),
                     "time" to time.toInt()
                 )
-
 
                 db.collection(ShovlConstants.KEY_COLLECTION_POSTS)
                     .document(post.id.toString())

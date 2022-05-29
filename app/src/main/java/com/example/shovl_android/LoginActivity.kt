@@ -99,7 +99,10 @@ class LoginActivity : AppCompatActivity() {
                                         ShovlConstants.KEY_PHONE,
                                         snapShot.getString(ShovlConstants.KEY_PHONE).toString()
                                     )
-
+                                    preferenceMangager.putString(
+                                        ShovlConstants.KEY_DP_IMAGE,
+                                        snapShot.getString(ShovlConstants.KEY_DP_IMAGE).toString()
+                                    )
                                     val intent = Intent(this, HomeActivity::class.java)
                                     intent.flags =
                                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

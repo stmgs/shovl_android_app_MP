@@ -17,6 +17,7 @@ import com.example.shovl_android.data.Post
 import com.example.shovl_android.databinding.FragmentConfirmBinding
 import com.example.shovl_android.utilities.PreferenceMangager
 import com.example.shovl_android.utilities.ShovlConstants
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ConfirmFragment : Fragment() {
@@ -45,7 +46,7 @@ class ConfirmFragment : Fragment() {
         db.collection(ShovlConstants.KEY_COLLECTION_POSTS)
             .whereEqualTo(ShovlConstants.POSTED_BY,preferenceMangager.getString(ShovlConstants.KEY_USER_ID))
             .get()
-            .addOnSuccessListener {
+            .addOnSuccessListener { it ->
                 if (it.isEmpty){
                     //if block is working fine
                     binding.tvNoDataPosts.visibility=View.VISIBLE
@@ -59,11 +60,11 @@ class ConfirmFragment : Fragment() {
                         postList.add(postModel)
                     }
 
-                    binding.rvConfirmShoveler.also {
-                        it.layoutManager= LinearLayoutManager(requireContext()
+                    binding.rvConfirmShoveler.also {recyclerview->
+                        recyclerview.layoutManager= LinearLayoutManager(requireContext()
                             , LinearLayoutManager.VERTICAL, false)
-                        it.setHasFixedSize(true)
-                        it.adapter =
+                        recyclerview.setHasFixedSize(true)
+                        recyclerview.adapter =
                             postModel.bidders?.let { it1 ->
                                 ConfirmShovelerAdapter(it1, object : ConfirmShovelerAdapter.ConfirmRVClickListener{
                                     override fun onConfirmClicked(bidder: Bidders) {
@@ -74,6 +75,26 @@ class ConfirmFragment : Fragment() {
 
                                     override fun onDeleteClicked(bidder: Bidders) {
                                         it1.remove(bidder)
+
+                                        val bidderMapToDelete= hashMapOf<String, Any?>(
+                                            "user_id" to bidder.user_id,
+                                            "name" to bidder.name,
+                                            "price" to bidder.price,
+                                            "time" to bidder.time
+                                        )
+
+                                        db.collection(ShovlConstants.KEY_COLLECTION_POSTS)
+                                            .document(postModel.bidders.toString())
+                                            .update(ShovlConstants.KEY_BIDDERS,
+                                                FieldValue.arrayRemove(bidderMapToDelete))
+                                            .addOnSuccessListener {
+
+                                            }
+                                            .addOnFailureListener {
+
+                                            }
+
+
                                         binding.rvConfirmShoveler.adapter?.notifyDataSetChanged()
 
                                     }
