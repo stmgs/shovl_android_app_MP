@@ -49,6 +49,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.core:core:1.7.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
@@ -57,6 +58,16 @@ dependencies {
     implementation 'com.google.android.libraries.places:places:2.5.0'
 
     implementation 'com.stripe:stripe-android:19.1.1'
+
+    /*
+  For Gradle, add the following dependency to your build.gradle and replace {VERSION} with
+  the version number you want to use from
+  - https://mvnrepository.com/artifact/com.stripe/stripe-java or
+  - https://github.com/stripe/stripe-java/releases/latest
+*/
+    implementation "com.stripe:stripe-java:20.77.0"
+    implementation "com.stripe:stripe-android:17.2.0"
+    implementation "com.android.volley:volley:1.1.0"
 
     //google material components
     implementation 'com.google.android.material:material:1.5.0'
