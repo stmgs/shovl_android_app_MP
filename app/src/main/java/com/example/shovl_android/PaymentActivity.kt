@@ -14,10 +14,17 @@ class PaymentActivity : AppCompatActivity() {
         binding = ActivityPaymentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnPay.setOnClickListener {
-            Toast.makeText(this, "Payment is made.", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, HomeActivity::class.java))
-            finish()
-        }
+
+
+
+
+
+
+
+//        binding.btnPay.setOnClickListener {
+//            Toast.makeText(this, "Payment is made.", Toast.LENGTH_SHORT).show()
+//            startActivity(Intent(this, HomeActivity::class.java))
+//            finish()
+//        }
     }
 }

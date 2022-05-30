@@ -19,7 +19,14 @@ class Splashscreen : AppCompatActivity() {
         setContentView(binding.root)
         preferenceMangager = PreferenceMangager(applicationContext)
 
-        if (preferenceMangager.getBoolean(ShovlConstants.KEY_IS_SIGNED_IN)){
+
+
+        binding.btnInfo.setOnClickListener {
+            startActivity(Intent(this, TeamInformationPage::class.java))
+        }
+        Handler().postDelayed({
+
+            if (preferenceMangager.getBoolean(ShovlConstants.KEY_IS_SIGNED_IN)){
                 val intent = Intent(this, HomeActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
@@ -29,6 +36,11 @@ class Splashscreen : AppCompatActivity() {
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             }
+
+        }, 5000)
+
+
+
 
     }
 }

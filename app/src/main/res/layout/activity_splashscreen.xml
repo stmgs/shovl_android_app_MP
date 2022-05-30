@@ -16,19 +16,21 @@
         android:layout_centerInParent="true"
         android:src="@drawable/shovl_logo" />
 
-    <TextView
+    <Button
+        android:id="@+id/btn_info"
         android:layout_width="420dp"
         android:layout_height="35dp"
         android:layout_below="@+id/img_shovl_logo"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:layout_marginTop="282dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="#FFFFFF"
+        android:gravity="center"
         android:text="Developed By Team Shovl"
         android:textColor="@color/black"
-        android:textSize="14sp"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:layout_marginBottom="20dp"/>
+        android:textSize="14sp" />
+
+
 
 </RelativeLayout>
 
