@@ -32,12 +32,13 @@
         <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.23981481481481481" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.23981481481481481" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2065972222222222" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.134912109375" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.23436126708984376" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_payment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.170025634765625" />
         <entry key="app/src/main/res/layout/activity_splashscreen.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_team_information_page.xml" value="0.21105072463768115" />
         <entry key="app/src/main/res/layout/fragment_confirm.xml" value="0.23981481481481481" />
         <entry key="app/src/main/res/layout/fragment_posts.xml" value="0.23981481481481481" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.23981481481481481" />
