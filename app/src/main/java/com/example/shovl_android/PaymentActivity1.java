@@ -51,6 +51,8 @@ public class PaymentActivity1 extends AppCompatActivity {
             onPaymentResult(paymentSheetResult);
         });
 
+        btnpay=findViewById(R.id.btn_pay);
+
         btnpay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

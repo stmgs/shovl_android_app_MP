@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.shovl_android.ActivityDetails
 import com.example.shovl_android.HomeActivity
 import com.example.shovl_android.PaymentActivity
+import com.example.shovl_android.PaymentActivity1
 import com.example.shovl_android.adapters.ConfirmShovelerAdapter
 import com.example.shovl_android.data.Bidders
 import com.example.shovl_android.data.Post
@@ -69,8 +70,8 @@ class ConfirmFragment : Fragment() {
                             postModel.bidders?.let { it1 ->
                                 ConfirmShovelerAdapter(it1, object : ConfirmShovelerAdapter.ConfirmRVClickListener{
                                     override fun onConfirmClicked(bidder: Bidders) {
-                                        val intent = Intent(requireContext(), PaymentActivity::class.java)
-                                        intent.putExtra("bidder_data", bidder)
+                                        val intent = Intent(requireContext(), PaymentActivity1::class.java)
+                                        //intent.putExtra("bidder_data", bidder)
                                         startActivity(intent)
                                     }
 
