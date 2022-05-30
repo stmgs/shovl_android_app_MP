@@ -26,6 +26,7 @@
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.1275" />
         <entry key="app/src/main/res/layout/activity_ad_listing.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_bidding.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_confirm_shoveler.xml" value="0.11614583333333334" />
         <entry key="app/src/main/res/layout/activity_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_details2.xml" value="0.25401611328125007" />
         <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.23981481481481481" />

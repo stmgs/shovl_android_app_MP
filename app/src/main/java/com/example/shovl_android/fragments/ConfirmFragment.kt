@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.shovl_android.ActivityDetails
+import com.example.shovl_android.HomeActivity
 import com.example.shovl_android.PaymentActivity
 import com.example.shovl_android.adapters.ConfirmShovelerAdapter
 import com.example.shovl_android.data.Bidders
@@ -76,27 +77,32 @@ class ConfirmFragment : Fragment() {
                                     override fun onDeleteClicked(bidder: Bidders) {
                                         it1.remove(bidder)
 
-                                        val bidderMapToDelete= hashMapOf<String, Any?>(
+                                        val bidderMap= hashMapOf<String, Any?>(
                                             "user_id" to bidder.user_id,
                                             "name" to bidder.name,
                                             "price" to bidder.price,
-                                            "time" to bidder.time
+                                            "time" to bidder.time,
+                                            "rejected" to true
+
                                         )
 
                                         db.collection(ShovlConstants.KEY_COLLECTION_POSTS)
-                                            .document(postModel.bidders.toString())
-                                            .update(ShovlConstants.KEY_BIDDERS,
-                                                FieldValue.arrayRemove(bidderMapToDelete))
+                                            .document(postModel.id.toString())
+                                            .update(ShovlConstants.KEY_BIDDERS,FieldValue
+                                                .arrayUnion(bidderMap))
                                             .addOnSuccessListener {
+                                                Toast.makeText(requireContext(), "Bid has been posted.", Toast.LENGTH_SHORT).show()
 
+                                                /*val intent = Intent(requireContext(), HomeActivity::class.java)
+                                                intent.flags =
+                                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                                startActivity(intent)*/
+
+                                            }.addOnFailureListener {
+                                                Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_LONG).show()
                                             }
-                                            .addOnFailureListener {
-
-                                            }
-
 
                                         binding.rvConfirmShoveler.adapter?.notifyDataSetChanged()
-
                                     }
 
                                 })
