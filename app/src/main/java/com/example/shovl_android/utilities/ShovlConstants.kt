@@ -37,5 +37,11 @@ class ShovlConstants {
         const val KEY_COLLECTION_BIDDING="bidding"
         const val KEY_BID_PRICE="bidPrice"
         const val KEY_REQ_TIME="requiredTime"
+
+        const val BASE_URL_FIREBASE = "https://fcm.googleapis.com"
+        const val FIREBASE_SERVER_KEY = "AAAANW67fxU:APA91bFIDRwEPkaxaG70dPkP__3rc0JG_W6hoTqxxEMleERV43PR9tynpXFw8swlTlAhE0GcYbpqin4EGANad_sTI45NtqHaZHfxjs-EJ4Ug8r4LvaGDs-NiTix7gGyvbW8Zek95cBto"
+        const val CONTENT_TYPE = "application/json"
+
+        
     }
 }

@@ -37,7 +37,8 @@ class PostsFragment : Fragment() {
 
         val db= FirebaseFirestore.getInstance()
         db.collection(ShovlConstants.KEY_COLLECTION_POSTS)
-            .whereNotEqualTo(ShovlConstants.POSTED_BY,preferenceMangager.getString(ShovlConstants.KEY_USER_ID))
+            .whereNotEqualTo(ShovlConstants.POSTED_BY
+                ,preferenceMangager.getString(ShovlConstants.KEY_USER_ID))
             .get()
             .addOnSuccessListener {
                 if (it.isEmpty){
@@ -64,9 +65,7 @@ class PostsFragment : Fragment() {
                                     val intent = Intent(requireContext(), ActivityDetails::class.java)
                                     intent.putExtra("post_data", post)
                                     startActivity(intent)
-
                                 }
-
                             })
                     }
 

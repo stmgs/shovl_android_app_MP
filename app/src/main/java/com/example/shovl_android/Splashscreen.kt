@@ -37,7 +37,7 @@ class Splashscreen : AppCompatActivity() {
                 startActivity(intent)
             }
 
-        }, 5000)
+        }, 2000)
 
 
 

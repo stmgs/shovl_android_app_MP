@@ -7,4 +7,17 @@ data class Bidders(
     var name : String? = null,
     val price : Int?= null,
     val time : Int?= null,
-) : Serializable
+    val rejected : Boolean? = false
+) : Serializable{
+
+    override fun equals(other: Any?): Boolean {
+
+        return this.name==(other as Bidders).name
+                && this.price == other.price
+                && this.time == other.time
+                && this.user_id == other.user_id
+                && this.rejected == other.rejected
+
+
+    }
+}

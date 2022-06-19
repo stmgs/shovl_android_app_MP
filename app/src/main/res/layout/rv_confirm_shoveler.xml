@@ -77,6 +77,19 @@
             android:focusable="true"
             />
 
+        <TextView
+            android:id="@+id/tv_rejected_confirm_rv_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            android:text="Rejected"
+            android:background="@drawable/red_tint_background"
+            android:padding="4dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/white"/>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

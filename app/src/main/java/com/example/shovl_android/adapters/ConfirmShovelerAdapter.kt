@@ -31,17 +31,22 @@ class ConfirmShovelerAdapter(private val bidders: ArrayList<Bidders>
         with(holder){
             shovelerNameTv.text=bidder?.name.toString()
             rateTimeTv.text="$"+bidder?.price+" * "+bidder?.time+" hours"
-            tickIv.setOnClickListener {
-                listener?.onConfirmClicked(bidder)
-            }
+            if (bidder.rejected==false){
+                rejectedTv.visibility=View.GONE
 
-            cancelIv.setOnClickListener {
-                listener?.onDeleteClicked(bidder)
+                tickIv.setOnClickListener {
+                    listener?.onConfirmClicked(bidder)
+                }
+
+                cancelIv.setOnClickListener {
+                    listener?.onDeleteClicked(bidder)
+                }
+            } else{
+                rejectedTv.visibility=View.VISIBLE
+                tickIv.visibility=View.GONE
+                cancelIv.visibility=View.GONE
             }
         }
-
-
-
     }
 
     override fun getItemCount(): Int {
@@ -53,6 +58,7 @@ class ConfirmShovelerAdapter(private val bidders: ArrayList<Bidders>
         val rateTimeTv= itemView.findViewById<TextView>(R.id.tv_rate_and_time_confirm_rv_item)
         val tickIv= itemView.findViewById<ImageView>(R.id.iv_tick_confirm_rv_item)
         val cancelIv= itemView.findViewById<ImageView>(R.id.iv_delete_confirm_rv_item)
+        val rejectedTv= itemView.findViewById<TextView>(R.id.tv_rejected_confirm_rv_item)
 
     }
 

@@ -14,6 +14,8 @@ import com.example.shovl_android.utilities.ShovlConstants
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessaging
 
+const val TOPIC="/topics/myTopic"
+
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding : ActivityHomeBinding
     private lateinit var preferenceMangager: PreferenceMangager
@@ -26,6 +28,7 @@ class HomeActivity : AppCompatActivity() {
         preferenceMangager = PreferenceMangager(this    )
 
         getToken()
+        FirebaseMessaging.getInstance().subscribeToTopic(TOPIC)
 
         val postsFragment = PostsFragment()
         val addPostFragment = AddPostFragment()

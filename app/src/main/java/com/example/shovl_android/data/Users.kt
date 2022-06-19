@@ -10,4 +10,5 @@ data class Users(
     val phone : String?= null,
     val gender : String?= null,
     val email : String?= null,
+    val fcm_token : String?= null,
 ) : Serializable

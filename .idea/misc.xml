@@ -22,6 +22,7 @@
         <entry key="app/src/main/res/drawable/ic_notifications.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/location_icon.xml" value="0.25833333333333336" />
+        <entry key="app/src/main/res/drawable/red_tint_background.xml" value="0.1515" />
         <entry key="app/src/main/res/drawable/spalsh_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.1275" />
         <entry key="app/src/main/res/layout/activity_ad_listing.xml" value="0.1" />

@@ -60,8 +60,8 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/iv_pp_profile"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             app:riv_oval="true"
             android:background="@drawable/background_pp"
             android:scaleType="centerCrop"
