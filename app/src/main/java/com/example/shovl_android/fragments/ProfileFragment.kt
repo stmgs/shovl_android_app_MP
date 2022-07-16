@@ -12,14 +12,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import com.example.shovl_android.EditProfile
-import com.example.shovl_android.HomeActivity
 import com.example.shovl_android.LoginActivity
 import com.example.shovl_android.R
 import com.example.shovl_android.databinding.FragmentProfileBinding
 import com.example.shovl_android.utilities.PreferenceMangager
 import com.example.shovl_android.utilities.ShovlConstants
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
+import kotlin.collections.HashMap
+import kotlin.math.log
 
 class ProfileFragment : Fragment() {
 
@@ -52,13 +55,7 @@ class ProfileFragment : Fragment() {
                         .setTitle("Are you sure you want to logout?")
                         .setPositiveButton("Yes", object : DialogInterface.OnClickListener{
                         override fun onClick(p0: DialogInterface?, p1: Int) {
-                            preferenceMangager.clear()
-                            Toast.makeText(requireContext(),
-                                "You have been logged out.", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(requireContext(), LoginActivity::class.java)
-                            intent.flags =
-                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            startActivity(intent)
+                            logout()
                         }
                     })
                     .setNegativeButton("No", object : DialogInterface.OnClickListener{
@@ -87,6 +84,25 @@ class ProfileFragment : Fragment() {
                 startActivity(intent)
 
         }
+    }
+
+    private fun logout(){
+        val database = FirebaseFirestore.getInstance();
+        val docRef = database.collection(ShovlConstants.KEY_COLLECTION_USERS)
+            .document(preferenceMangager.getString(ShovlConstants.KEY_USER_ID))
+
+        val updates = HashMap<String, Any>()
+        updates.put(ShovlConstants.KEY_FCM_TOKEN, FieldValue.delete())
+        docRef.update(updates)
+            .addOnSuccessListener {
+                preferenceMangager.clear()
+                Toast.makeText(requireContext(),
+                    "You have been logged out.", Toast.LENGTH_SHORT).show()
+                val intent = Intent(requireContext(), LoginActivity::class.java)
+                intent.flags =
+                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
     }
 
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,16 +20,47 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="359dp"
-        android:layout_height="570dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_edit_profile">
+
+        <FrameLayout
+            android:id="@+id/frame_layout_placeholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/iv_pp_edit"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/background_pp"
+                android:scaleType="centerCrop"
+                app:riv_oval="true" />
+
+            <TextView
+                android:id="@+id/tv_add_image_text_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_add_photo"
+                android:text="Update photo" />
+
+
+        </FrameLayout>
 
         <TextView
             android:id="@+id/nameEditLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:text="Name:"
             android:textColor="@color/primaryColor"
             android:textSize="24sp"
@@ -37,7 +69,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/frame_layout_placeholder"
             app:layout_constraintVertical_chainStyle="spread" />
 
         <EditText
@@ -108,10 +140,10 @@
             android:id="@+id/lin_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="3"
             android:layout_gravity="center"
-            android:gravity="center"
             android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:weightSum="3"
             app:layout_constraintBottom_toTopOf="@+id/addressEditLabel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -123,10 +155,9 @@
                 android:id="@+id/rg_gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="2"
                 android:layout_gravity="center_horizontal"
-                >
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/rb_male"
@@ -142,11 +173,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight=".5"
-                    android:text="Female"
                     android:buttonTint="@color/primaryColor"
+                    android:text="Female"
                     android:textSize="14sp" />
-            </RadioGroup
-                >
+            </RadioGroup>
 
         </LinearLayout>
 
@@ -181,41 +211,34 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addressEditLabel" />
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="296dp"
-        android:layout_height="81dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
         <Button
             android:id="@+id/updateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="Update"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cancelButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/addressEditText1" />
 
         <Button
             android:id="@+id/cancelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#F44336"
+            android:layout_marginTop="20dp"
             android:text="Cancel"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/updateButton"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/addressEditText1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

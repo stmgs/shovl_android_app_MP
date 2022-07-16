@@ -229,10 +229,9 @@ class RegisterActivity : AppCompatActivity() {
         val previewheight:Int = bitmap.height*previewWidth / bitmap.width
         val previewBitmap : Bitmap = Bitmap.createScaledBitmap(bitmap, previewWidth, previewheight, false)
         val byteArrayOutputStream = ByteArrayOutputStream()
-        previewBitmap.compress(Bitmap.CompressFormat.JPEG, 50 , byteArrayOutputStream )
+        previewBitmap.compress(Bitmap.CompressFormat.JPEG, 100 , byteArrayOutputStream )
         val bytes = byteArrayOutputStream.toByteArray()
         return Base64.encodeToString(bytes, Base64.DEFAULT)
-
 
     }
 

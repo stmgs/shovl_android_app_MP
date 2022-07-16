@@ -62,10 +62,7 @@ class HomeActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 preferenceMangager.putString(ShovlConstants.KEY_FCM_TOKEN, token)
             }
-
     }
-
-
 
     fun changeFragment(fragment : Fragment){
         supportFragmentManager.beginTransaction().apply {

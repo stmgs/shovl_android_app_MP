@@ -114,7 +114,7 @@ class BiddingActivity : AppCompatActivity() {
         try{
             val response = RetrofitInstance.api.postNotification(notification)
             if (response.isSuccessful){
-                Log.d(TAG,"Response: ${Gson().toJson(response)}")
+                //Log.d(TAG,"Response: ${Gson().toJson(response)}")
             }
         } catch (e: Exception){
             Log.e(TAG, e.toString())

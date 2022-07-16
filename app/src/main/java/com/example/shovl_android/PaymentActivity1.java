@@ -130,7 +130,6 @@ public class PaymentActivity1 extends AppCompatActivity {
 
             }
         }){
-
             // Authoraization Tool
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
