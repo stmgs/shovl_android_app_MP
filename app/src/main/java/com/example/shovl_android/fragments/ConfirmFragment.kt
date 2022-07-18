@@ -38,6 +38,8 @@ class ConfirmFragment : Fragment() {
     private val TAG: String? = "ConfirmFragment"
     private lateinit var binding : FragmentConfirmBinding
     private lateinit var preferenceMangager: PreferenceMangager
+    private lateinit var db: FirebaseFirestore
+    private lateinit var bidderToSendNotifcation: Bidders
     var SECRET_KEY =
         "sk_test_51L4qAgKDCJiANE10hYGDVgZ6mluJl15oYjSdVSu6BM0nFW4QtCReu4YWSG73MZmsuovsblG21M22VpChGnRC7MQl003QlaG6C9"
     var PUBLISH_KEY =
@@ -69,7 +71,7 @@ class ConfirmFragment : Fragment() {
 
         PaymentConfiguration.init(requireContext(), PUBLISH_KEY)
 
-        val db= FirebaseFirestore.getInstance()
+        db= FirebaseFirestore.getInstance()
         db.collection(ShovlConstants.KEY_COLLECTION_POSTS)
             .whereEqualTo(ShovlConstants.POSTED_BY
                 ,preferenceMangager.getString(ShovlConstants.KEY_USER_ID))
@@ -101,7 +103,7 @@ class ConfirmFragment : Fragment() {
                                 ConfirmShovelerAdapter(it1, object : ConfirmShovelerAdapter.ConfirmRVClickListener{
                                     override fun onConfirmClicked(bidder: Bidders) {
                                         //open a payment botton fragment here
-                                        //PaymentFlow()
+                                        bidderToSendNotifcation=bidder
                                         amount = bidder.price?.times(bidder.time!!) ?: 0
                                         val stringRequest: StringRequest = object : StringRequest(
                                             Method.POST,
@@ -124,24 +126,8 @@ class ConfirmFragment : Fragment() {
                                                 return header
                                             }
                                         }
-
                                         val requestQueue = Volley.newRequestQueue(requireContext())
                                         requestQueue.add(stringRequest)
-
-                                        db.collection(ShovlConstants.KEY_COLLECTION_USERS)
-                                            .document(bidder.user_id.toString())
-                                            .get()
-                                            .addOnSuccessListener {
-                                                val bidderUser = it.toObject(Users::class.java)
-                                                PushNotification(
-                                                    NotificationData("Chores alert!!!"
-                                                        , "${preferenceMangager.getString(ShovlConstants.KEY_NAME)} is waiting for your service."),
-                                                    bidderUser?.fcm_token.toString()
-                                                ).also {
-                                                    sendNotification(it)
-                                                }
-                                                println("empty user collection")
-                                            }
                                     }
 
                                     override fun onDeleteClicked(bidder: Bidders) {
@@ -181,12 +167,30 @@ class ConfirmFragment : Fragment() {
                 paymentSheetResult!!
             )
         }
-
     }
 
     private fun onPaymentResult(paymentSheetResult: PaymentSheetResult) {
         if (paymentSheetResult is PaymentSheetResult.Completed) {
             Toast.makeText(requireContext(), "Payment Success", Toast.LENGTH_SHORT).show()
+
+            //payment success
+            db.collection(ShovlConstants.KEY_COLLECTION_USERS)
+                .document(bidderToSendNotifcation.user_id.toString())
+                .get()
+                .addOnSuccessListener {
+                    val bidderUser = it.toObject(Users::class.java)
+                    PushNotification(
+                        NotificationData("Chores alert!!!"
+                            , "${preferenceMangager.getString(ShovlConstants.KEY_NAME)} is waiting for your service.","${amount.toString()}",postModel.address,"chore"),
+                        bidderUser?.fcm_token.toString()
+                    ).also {
+                        sendNotification(it)
+                    }
+                    println("empty user collection")
+                }
+
+
+
         }
     }
 

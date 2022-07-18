@@ -33,6 +33,7 @@ class ConfirmShovelerAdapter(private val bidders: ArrayList<Bidders>
             rateTimeTv.text="$"+bidder?.price+" * "+bidder?.time+" hours"
             if (bidder.rejected==false){
                 rejectedTv.visibility=View.GONE
+                confirmedTv.visibility=View.GONE
 
                 tickIv.setOnClickListener {
                     listener?.onConfirmClicked(bidder)
@@ -41,8 +42,15 @@ class ConfirmShovelerAdapter(private val bidders: ArrayList<Bidders>
                 cancelIv.setOnClickListener {
                     listener?.onDeleteClicked(bidder)
                 }
-            } else{
+            } else if(bidder.confirmed==true){
+                rejectedTv.visibility=View.GONE
+                confirmedTv.visibility=View.VISIBLE
+                tickIv.visibility=View.GONE
+                cancelIv.visibility=View.GONE
+            }
+            else{
                 rejectedTv.visibility=View.VISIBLE
+                confirmedTv.visibility=View.GONE
                 tickIv.visibility=View.GONE
                 cancelIv.visibility=View.GONE
             }
@@ -59,6 +67,7 @@ class ConfirmShovelerAdapter(private val bidders: ArrayList<Bidders>
         val tickIv= itemView.findViewById<ImageView>(R.id.iv_tick_confirm_rv_item)
         val cancelIv= itemView.findViewById<ImageView>(R.id.iv_delete_confirm_rv_item)
         val rejectedTv= itemView.findViewById<TextView>(R.id.tv_rejected_confirm_rv_item)
+        val confirmedTv= itemView.findViewById<TextView>(R.id.tv_confirmed_confirm_rv_item)
 
     }
 

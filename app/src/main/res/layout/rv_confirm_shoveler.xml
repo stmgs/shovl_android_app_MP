@@ -86,8 +86,21 @@
             card_view:layout_constraintBottom_toBottomOf="parent"
             android:text="Rejected"
             android:background="@drawable/red_tint_background"
-            android:padding="4dp"
-            android:layout_marginRight="10dp"
+            android:padding="5dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/tv_confirmed_confirm_rv_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            android:text="Confirmed"
+            android:background="@drawable/blue_tint_background"
+            android:padding="5dp"
+            android:layout_marginEnd="10dp"
             android:textColor="@color/white"/>
 
 

@@ -65,7 +65,8 @@ class BiddingActivity : AppCompatActivity() {
 
                         PushNotification(
                             NotificationData("Bidder alert!!!"
-                                    , "${preferenceMangager.getString(ShovlConstants.KEY_NAME)} bid on your post."),
+                                    , "${preferenceMangager.getString(ShovlConstants.KEY_NAME)} bid on your post."
+                                , null, null, "bidder"),
                             postedBy.fcm_token.toString()
                         ).also {
                                 sendNotification(it)
