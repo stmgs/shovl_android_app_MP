@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.shovl_android">
+    package="com.shovl.shovl_android">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -14,14 +14,14 @@
         android:theme="@style/Theme.Shovl_android"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ChoreDetails"
+            android:name="com.shovl.shovl_android.ChoreDetails"
             android:exported="false" />
         <activity
-            android:name=".TeamInformationPage"
+            android:name="com.shovl.shovl_android.TeamInformationPage"
             android:exported="false" />
 
         <service
-            android:name=".service.MessagingService"
+            android:name="com.shovl.shovl_android.service.MessagingService"
             android:exported="false"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
@@ -31,43 +31,43 @@
         </service>
 
         <activity
-            android:name=".HomeActivity"
+            android:name="com.shovl.shovl_android.HomeActivity"
             android:exported="false"
             android:screenOrientation="locked"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name="com.shovl.shovl_android.ForgotPasswordActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".BiddingActivity"
+            android:name="com.shovl.shovl_android.BiddingActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".EditProfile"
+            android:name="com.shovl.shovl_android.EditProfile"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".PaymentActivity"
+            android:name="com.shovl.shovl_android.PaymentActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".PaymentActivity1"
+            android:name="com.shovl.shovl_android.PaymentActivity1"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ActivityDetails"
+            android:name="com.shovl.shovl_android.ActivityDetails"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name="com.shovl.shovl_android.RegisterActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".LoginActivity"
+            android:name="com.shovl.shovl_android.LoginActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".Splashscreen"
+            android:name="com.shovl.shovl_android.Splashscreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
