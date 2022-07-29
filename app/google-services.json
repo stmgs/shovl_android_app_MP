@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:229491048213:android:d3e1fcd64223347a5c731c",
         "android_client_info": {
-          "package_name": "com.example.shovl_android"
+          "package_name": "com.shovl.shovl_android"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "229491048213-bgjmb4g81s9qjhnplj663u5u2cj2loa4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.shovl_android",
+            "package_name": "com.shovl.shovl_android",
             "certificate_hash": "c8fc57b818aa8545083848da4de66c342104cafc"
           }
         },

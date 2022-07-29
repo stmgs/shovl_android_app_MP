@@ -15,8 +15,8 @@ class ChoreDetails : AppCompatActivity() {
         val amount= intent.getStringExtra("amount")
         val location = intent.getStringExtra("location")
 
-        binding.tvAmount.text=amount
-        binding.tvLocation.text=location
+        binding.tvAmount.text="Amount: CAD $amount"
+        binding.tvLocation.text="Location: $location"
 
 
 

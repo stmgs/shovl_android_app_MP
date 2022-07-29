@@ -16,9 +16,6 @@
         <activity
             android:name="com.shovl.shovl_android.ChoreDetails"
             android:exported="false" />
-        <activity
-            android:name="com.shovl.shovl_android.TeamInformationPage"
-            android:exported="false" />
 
         <service
             android:name="com.shovl.shovl_android.service.MessagingService"

@@ -15,6 +15,7 @@ import com.shovl.shovl_android.utilities.PreferenceMangager
 import com.shovl.shovl_android.utilities.ShovlConstants
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.shovl.shovl_android.HomeActivity
 import kotlin.random.Random
 
 private const val CHANNEL_ID="General"
@@ -33,7 +34,6 @@ class MessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
-        println("remote message: ${remoteMessage.toString()}")
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notificationID = Random.nextInt()
@@ -41,30 +41,36 @@ class MessagingService : FirebaseMessagingService() {
         if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
             createNotificationChannel(notificationManager)
         }
-        i = Intent(baseContext, ChoreDetails::class.java)
-
-
-
-
+       // i = Intent(baseContext, ChoreDetails::class.java)
         when (remoteMessage.data["type"]) {
             "chore"->{
-                i = Intent(baseContext, ChoreDetails::class.java)
+                i = Intent(this, ChoreDetails::class.java)
                 println("chore amount : ${remoteMessage.data["amount"]}")
                 i.putExtra("amount", remoteMessage.data["amount"])
                 i.putExtra("location", remoteMessage.data["location"])
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                startActivity(i)
+                //startActivity(i)
+                createNotification(remoteMessage,notificationManager,notificationID)
 
             }
 
             "bidder"->{
+                i = Intent(this, HomeActivity::class.java)
+                createNotification(remoteMessage,notificationManager,notificationID)
+
 
             }
 
         }
 
 
-            //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+    }
+
+    private fun createNotification(
+        remoteMessage: RemoteMessage,
+        notificationManager: NotificationManager,
+        notificationID: Int
+    ) {
         val pendingIntent = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_ONE_SHOT)
         val notificaiton = NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle(remoteMessage.data["title"])

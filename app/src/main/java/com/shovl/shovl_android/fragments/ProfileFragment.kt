@@ -85,6 +85,12 @@ class ProfileFragment : Fragment() {
     }
 
     private fun logout(){
+        preferenceMangager.clear()
+        val intent = Intent(requireContext(), LoginActivity::class.java)
+        intent.flags =
+            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+
         val database = FirebaseFirestore.getInstance();
         val docRef = database.collection(ShovlConstants.KEY_COLLECTION_USERS)
             .document(preferenceMangager.getString(ShovlConstants.KEY_USER_ID))
@@ -93,13 +99,10 @@ class ProfileFragment : Fragment() {
         updates.put(ShovlConstants.KEY_FCM_TOKEN, FieldValue.delete())
         docRef.update(updates)
             .addOnSuccessListener {
-                preferenceMangager.clear()
+
                 Toast.makeText(requireContext(),
                     "You have been logged out.", Toast.LENGTH_SHORT).show()
-                val intent = Intent(requireContext(), LoginActivity::class.java)
-                intent.flags =
-                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
+
             }
     }
 

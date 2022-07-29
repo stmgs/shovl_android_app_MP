@@ -176,6 +176,17 @@
             app:layout_constraintStart_toStartOf="@id/glLeft"
             app:layout_constraintTop_toBottomOf="@+id/tvForgotPasswordClick" />
 
+        <com.google.android.gms.common.SignInButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/glogin"
+            app:layout_constraintEnd_toEndOf="@id/glRight"
+            app:layout_constraintStart_toStartOf="@id/glLeft"
+            app:layout_constraintTop_toBottomOf="@+id/tvNewUser"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+             />
+
 
 
 
@@ -213,6 +224,8 @@
                 android:layout_marginEnd="120dp"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

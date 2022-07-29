@@ -18,13 +18,6 @@ class Splashscreen : AppCompatActivity() {
         setContentView(binding.root)
         preferenceMangager = PreferenceMangager(applicationContext)
 
-
-
-        binding.btnInfo.setOnClickListener {
-            startActivity(Intent(this, TeamInformationPage::class.java))
-        }
-
-
         if (intent.extras != null) {
 
             when (intent.extras!!.get("type")) {

@@ -10,6 +10,9 @@ import com.shovl.shovl_android.data.Users
 import com.shovl.shovl_android.databinding.ActivityDetails2Binding
 import com.shovl.shovl_android.utilities.ShovlConstants
 import com.google.firebase.firestore.FirebaseFirestore
+import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
+import com.smarteist.autoimageslider.SliderAnimations
+import com.smarteist.autoimageslider.SliderView
 
 class ActivityDetails : AppCompatActivity() {
     private lateinit var binding : ActivityDetails2Binding
