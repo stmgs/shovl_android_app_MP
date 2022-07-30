@@ -35,7 +35,7 @@
                 android:layout_marginEnd="10dp"
                 android:text="Posted by : XXXX XXXX"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
 
             <LinearLayout
@@ -82,8 +82,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/lin_1"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
                 android:hint="Location"
                 android:padding="4dp"
                 android:textColor="@color/black"
@@ -98,10 +98,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_location"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="10dp"
                 android:text="this is a short des about the property"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="8dp"
                 android:scrollbars="horizontal|vertical"
                 android:textSize="16sp"
                 android:background="@drawable/grey_tint_background"
@@ -113,10 +113,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_description_details"
-                android:layout_margin="12dp"
+                android:layout_margin="8dp"
                 android:background="@drawable/blue_border"
                 android:orientation="vertical"
-                android:padding="8dp"
+                android:padding="4dp"
                 >
 
                 <TextView
@@ -124,7 +124,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:textSize="21sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:drawableRight="@drawable/calender_icon"/>
@@ -199,7 +199,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/linlayoutmiddle"
-                android:layout_margin="12dp"
+                android:layout_margin="8dp"
                 android:background="@drawable/blue_border"
                 android:orientation="vertical"
                 android:padding="8dp"
@@ -210,7 +210,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:textSize="21sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:drawableRight="@drawable/clock_icon"/>
@@ -287,7 +287,6 @@ android:layout_margin="5dp"
                 android:id="@+id/btn_apply_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/linlayouttime"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="30dp"
@@ -296,7 +295,8 @@ android:layout_margin="5dp"
                 android:textAllCaps="false"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:cornerRadius="8dp" />
+                app:cornerRadius="8dp"
+                android:layout_marginBottom="12dp"/>
 
         </LinearLayout>
 
